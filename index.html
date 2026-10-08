@@ -10,6 +10,7 @@
 
   <!-- Google Fonts & Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/dashboards.css">
   <link rel="icon" type="image/svg+xml" href="assets/images/keyspace/logo.svg">
 </head>
 <body>
@@ -28,8 +29,8 @@
       <!-- Desktop Nav Menu -->
       <nav>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
-          <li><a href="#" class="nav-link" data-target="katalog">Katalog</a></li>
+          <li><a href="#" class="nav-link active" data-target="home">Beranda</a></li>
+          <li><a href="#" class="nav-link" data-target="katalog">Katalog Produk</a></li>
           <li><a href="#" class="nav-link" data-target="custom">Custom Order</a></li>
           <li><a href="#" class="nav-link" data-target="portofolio">Portofolio</a></li>
           <li><a href="#" class="nav-link" data-target="riwayat">Lacak Pesanan</a></li>
@@ -58,10 +59,15 @@
           <span id="cart-count-badge" class="cart-counter-badge" style="display: none;">0</span>
         </button>
 
-        <!-- Hubungi Kami Button (Golden Yellow Pill with Live Pulse Dot) -->
-        <a href="https://wa.me/6285762005247?text=Halo%20Keyspace,%20saya%20ingin%20konsultasi%20pemesanan%20kaos" target="_blank" class="nav-contact-btn">
-          <span class="live-dot"></span>
-          <span>Hubungi Kami</span>
+        <!-- AUTH LOGIN & REGISTER CONTAINER -->
+        <div id="nav-auth-container" class="nav-auth-group"></div>
+
+        <!-- WhatsApp Direct Icon Button (Compact Icon with Pulse Dot) -->
+        <a href="https://wa.me/6285762005247?text=Halo%20Keyspace,%20saya%20ingin%20konsultasi%20pemesanan%20kaos" target="_blank" class="nav-wa-icon-btn" title="Chat WhatsApp Customer Service">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.711 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span class="nav-wa-pulse-dot"></span>
         </a>
 
         <!-- Mobile Menu Toggle -->
@@ -88,18 +94,18 @@
   <main>
 
     <!-- ======================================================================
-         SECTION 1: HOME (BERANDA)
+         SECTION 1: HOME (LANDING PAGE)
          ====================================================================== -->
     <section id="section-home" class="app-section active">
       <div class="container">
 
-        <!-- 1. INTERACTIVE SLIDEABLE HERO BANNER (Dapat Digeser) -->
+        <!-- 1. INTERACTIVE HERO BANNER WITH DIRECT CTAS -->
         <div class="hero-slider-section">
           <div class="hero-slider-wrapper" id="hero-slider-wrapper">
             <div class="hero-slides-track" id="hero-slides-track">
               <!-- Slide 1: Streetwear -->
               <div class="hero-slide-item">
-                <img src="assets/images/keyspace/slide_streetwear.jpg" alt="Koleksi Kaos Polos Keyspace.id - Soft Tee Kaos Polos Combed 30s" class="hero-slide-img" />
+                <img src="assets/images/keyspace/slide_streetwear.jpg" alt="Koleksi Kaos Polos Keyspace.id" class="hero-slide-img" />
               </div>
               <!-- Slide 2: Custom Sablon DTF -->
               <div class="hero-slide-item">
@@ -111,16 +117,36 @@
               </div>
             </div>
             
-            <!-- Controls (Left / Right Arrow) -->
+            <!-- Controls -->
             <button class="hero-nav-arrow hero-nav-prev" id="hero-prev-btn" aria-label="Slide sebelumnya">&#8249;</button>
             <button class="hero-nav-arrow hero-nav-next" id="hero-next-btn" aria-label="Slide berikutnya">&#8250;</button>
 
-            <!-- Bottom Slider Indicator Pills (Bisa Diklik) -->
+            <!-- Bottom Indicators -->
             <div class="hero-indicators-bar" id="hero-indicators-container">
               <button class="hero-indicator-btn active" data-slide="0" aria-label="Slide 1"></button>
               <button class="hero-indicator-btn" data-slide="1" aria-label="Slide 2"></button>
               <button class="hero-indicator-btn" data-slide="2" aria-label="Slide 3"></button>
             </div>
+          </div>
+        </div>
+
+        <!-- HERO ACTION BAR WITH ROLE BUTTONS -->
+        <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 16px; padding: 1.75rem 2rem; margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; box-shadow: var(--shadow-sm);">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 800; color: #EA580C; text-transform: uppercase; letter-spacing: 0.5px;">Solusi Apparel Konveksi & Sablon #1</span>
+            <h2 style="font-size: 1.45rem; font-weight: 800; color: #0F172A; margin: 0.25rem 0 0.35rem;">Siap Memulai Pemesanan Kaos & Apparel Anda?</h2>
+            <p style="font-size: 0.88rem; color: #64748B;">Pesan satuan tanpa minimum order atau ribuan lusin untuk seragam korporat & komunitas.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg" onclick="AppManager.navigateTo('katalog')">
+              🛍️ Mulai Belanja Sekarang
+            </button>
+            <button class="btn btn-secondary btn-lg" onclick="AppManager.navigateTo('custom')">
+              🎨 Studio Desain Custom
+            </button>
+            <button class="btn btn-dark btn-lg" onclick="AppManager.openAuthModal('admin')">
+              🔐 Masuk Portal Admin
+            </button>
           </div>
         </div>
 
@@ -169,7 +195,7 @@
               </div>
 
               <button class="custom-order-btn-cta" onclick="AppManager.navigateTo('custom')">
-                <span>Minta Penawaran</span> &rarr;
+                <span>Minta Penawaran Desain</span> &rarr;
               </button>
             </div>
 
@@ -189,7 +215,6 @@
 
           <div class="portfolio-grid-cards" id="keyspace-portfolio-grid"></div>
 
-          <!-- Centered Dark Navy Button -->
           <div class="portfolio-view-all-wrap">
             <button class="btn-portfolio-all" onclick="AppManager.navigateTo('portofolio')">
               <span>Lihat Semua Portofolio</span> &rarr;
@@ -240,7 +265,7 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 2: KATALOG PRODUK (Matching media_1791362695147.png)
+         SECTION 2: KATALOG PRODUK
          ====================================================================== -->
     <section id="section-katalog" class="app-section">
       <div class="container">
@@ -251,38 +276,33 @@
             <svg class="catalog-search-icon-inside" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            <input type="text" id="catalog-main-search-input" class="catalog-search-top-input" placeholder="Cari produk..." />
+            <input type="text" id="catalog-main-search-input" class="catalog-search-top-input" placeholder="Cari produk apparel (contoh: combed, polo, hoodie)..." onkeyup="AppManager.handleCatalogSearch(event)" />
           </div>
 
           <!-- Sorting Pills Bar -->
           <div class="catalog-sort-pills-bar">
             <span class="catalog-sort-label">Urutkan</span>
             <button class="sort-pill-btn active" data-sort="populer" onclick="AppManager.changeSort('populer')">Populer</button>
-            <button class="sort-pill-btn" data-sort="terbaru" onclick="AppManager.changeSort('terbaru')">Terbaru</button>
             <button class="sort-pill-btn" data-sort="terlaris" onclick="AppManager.changeSort('terlaris')">Terlaris</button>
-            
-            <select class="sort-dropdown-select" id="catalog-sort-dropdown" onchange="AppManager.changeSort(this.value)">
-              <option value="populer">Harga ▾</option>
-              <option value="price-low">Harga: Rendah ke Tinggi</option>
-              <option value="price-high">Harga: Tinggi ke Rendah</option>
-            </select>
+            <button class="sort-pill-btn" data-sort="harga-asc" onclick="AppManager.changeSort('harga-asc')">Harga Terendah</button>
+            <button class="sort-pill-btn" data-sort="harga-desc" onclick="AppManager.changeSort('harga-desc')">Harga Tertinggi</button>
+            <button class="sort-pill-btn" data-sort="rating" onclick="AppManager.changeSort('rating')">Rating Tertinggi</button>
           </div>
 
-          <!-- Content Columns: Left Sidebar Kategori + Right Products Grid -->
           <div class="catalog-content-columns">
-            <!-- Left Sidebar Kategori -->
-            <aside class="catalog-sidebar-card">
-              <div class="sidebar-category-header">KATEGORI</div>
-              <ul class="sidebar-category-list" id="catalog-sidebar-categories">
-                <!-- Will be populated dynamically: Semua, Kaos Custom, Kaos Polos, etc. -->
-              </ul>
-            </aside>
+            <!-- Sidebar Kategori -->
+            <div class="catalog-sidebar-col">
+              <h3 class="catalog-sidebar-title">Kategori Apparel</h3>
+              <div class="catalog-sidebar-categories-list" id="catalog-categories-sidebar"></div>
+            </div>
 
-            <!-- Right Main Area -->
-            <main class="catalog-main-area">
-              <div class="catalog-count-badge" id="catalog-items-count-text">23 produk ditemukan</div>
-              <div class="catalog-grid-4cols" id="catalog-products-grid"></div>
-            </main>
+            <!-- Products Grid List -->
+            <div class="catalog-products-col">
+              <div class="catalog-results-header">
+                <span id="catalog-results-count" class="catalog-results-count-text">Memuat produk...</span>
+              </div>
+              <div id="catalog-products-grid" class="catalog-grid-4cols"></div>
+            </div>
           </div>
 
         </div>
@@ -291,62 +311,70 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 3: CHECKOUT PAGE (Matching media_1791362679224.png)
+         SECTION 3: CHECKOUT ALUR LENGKAP
          ====================================================================== -->
     <section id="section-checkout" class="app-section">
-      <div class="container checkout-wrapper">
-        <h1 class="checkout-page-title">Checkout</h1>
+      <div class="container">
+        
+        <div class="section-header-row" style="margin-bottom: 1.5rem;">
+          <div>
+            <h2 class="section-title">Penyelesaian <span class="text-orange">Pesanan (Checkout)</span></h2>
+            <p class="section-subtitle">Lengkapi data pengiriman dan pilih metode pembayaran</p>
+          </div>
+        </div>
 
         <div class="checkout-grid-2cols">
-          <!-- LEFT COLUMN: Ringkasan Pesanan & Metode Pengiriman -->
+          <!-- LEFT COLUMN: Ringkasan Pesanan & Pengiriman -->
           <div class="checkout-col-left">
-            <!-- 1. Ringkasan Pesanan -->
+            <!-- Order Items Summary Box -->
             <div class="checkout-card">
-              <div class="checkout-card-header" onclick="AppManager.toggleCheckoutAccordion()">
-                <h3 class="checkout-card-title" id="checkout-summary-title">Ringkasan Pesanan (1 produk)</h3>
-                <span class="checkout-accordion-arrow" id="checkout-accordion-arrow">▲</span>
+              <div class="checkout-accordion-header" onclick="AppManager.toggleCheckoutAccordion()">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.25rem;">🛍️</span>
+                  <h3 class="checkout-card-title" id="checkout-summary-title">Ringkasan Pesanan</h3>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span id="checkout-subtotal-amount" style="font-weight: 800; color: #EA580C; font-size: 1.05rem;">Rp 0</span>
+                  <span id="checkout-accordion-arrow" style="font-size: 0.75rem; color: #64748B;">▲</span>
+                </div>
               </div>
-              <div id="checkout-order-items-list">
-                <!-- Dynamic Items from Cart -->
-              </div>
-              <div class="checkout-subtotal-row">
-                <span>Subtotal</span>
-                <span id="checkout-subtotal-amount">Rp 60.000</span>
-              </div>
+
+              <!-- Collapsible Product Items List -->
+              <div id="checkout-order-items-list" class="checkout-items-list-box"></div>
             </div>
 
-            <!-- 2. Metode Pengiriman -->
+            <!-- Metode Pengiriman -->
             <div class="checkout-card">
-              <h3 class="checkout-card-title" style="margin-bottom: 1rem;">Metode Pengiriman</h3>
-              
-              <!-- Option 1: Ambil di Toko -->
+              <h3 class="checkout-card-title" style="margin-bottom: 1rem;">Metode Pengiriman / Serah Terima</h3>
+
+              <!-- Option 1: Pickup in Store -->
               <div class="checkout-option-card selected" id="opt-shipping-store" onclick="AppManager.selectShippingMethod('store')">
                 <input type="radio" name="shippingMethod" id="radio-store" class="checkout-radio-input" checked />
                 <div>
-                  <label for="radio-store" class="checkout-option-label">🏬 Ambil Langsung di Workshop</label>
-                  <p class="checkout-option-desc">Jl. Jombang Raya No.42, Tangerang Selatan — Gratis (Rp 0)</p>
+                  <label for="radio-store" class="checkout-option-label">🏪 Ambil Sendiri di Toko / Workshop</label>
+                  <p class="checkout-option-desc">Workshop Keyspace: Jl. Jombang Raya No.42, Tangerang Selatan (Gratis Ongkir)</p>
                 </div>
               </div>
 
-              <!-- Option 2: Kurir Reguler -->
+              <!-- Option 2: Ekspedisi Reguler -->
               <div class="checkout-option-card" id="opt-shipping-regular" onclick="AppManager.selectShippingMethod('regular')">
                 <input type="radio" name="shippingMethod" id="radio-regular" class="checkout-radio-input" />
                 <div>
-                  <label for="radio-regular" class="checkout-option-label">🚚 Kurir Reguler (SiCepat / J&T / JNE)</label>
-                  <p class="checkout-option-desc">Estimasi 2-3 hari kerja — Rp 15.000</p>
+                  <label for="radio-regular" class="checkout-option-label">🚚 Pengiriman Ekspedisi Reguler (J&T / JNE)</label>
+                  <p class="checkout-option-desc">Estimasi 2-3 hari kerja ke seluruh Jabodetabek & Pulau Jawa (+ Rp 15.000)</p>
                 </div>
               </div>
 
-              <!-- Option 3: Kurir Express -->
+              <!-- Option 3: Express / Same Day -->
               <div class="checkout-option-card" id="opt-shipping-express" onclick="AppManager.selectShippingMethod('express')">
                 <input type="radio" name="shippingMethod" id="radio-express" class="checkout-radio-input" />
                 <div>
-                  <label for="radio-express" class="checkout-option-label">⚡ Kurir Express 1 Hari (JNE YES / Paxel)</label>
-                  <p class="checkout-option-desc">Estimasi 1 hari kerja sampai — Rp 25.000</p>
+                  <label for="radio-express" class="checkout-option-label">⚡ Express / 1 Hari Sampai (Paxel / JNE YES)</label>
+                  <p class="checkout-option-desc">Prioritas pengiriman cepat 1 hari kerja (+ Rp 25.000)</p>
                 </div>
               </div>
 
-              <!-- Address Form (shown when delivery selected) -->
+              <!-- Alamat Pengiriman Form -->
               <div id="delivery-address-form" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #F1F5F9;">
                 <div class="checkout-form-group">
                   <label class="checkout-form-label">Alamat Lengkap Penerima *</label>
@@ -448,53 +476,51 @@
               <div style="background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 8px; padding: 1rem; margin: 1rem 0 1.25rem;">
                 <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.35rem;">
                   <span>Subtotal Produk:</span>
-                  <span id="checkout-calc-subtotal">Rp 60.000</span>
+                  <span id="checkout-calc-subtotal" style="font-weight: 700; color: #1E293B;">Rp 0</span>
                 </div>
-                <div id="checkout-discount-row" style="display: none; justify-content: space-between; font-size: 0.88rem; color: #16A34A; margin-bottom: 0.35rem; font-weight: 700;">
+                <div style="display: none; justify-content: space-between; font-size: 0.88rem; color: #16A34A; margin-bottom: 0.35rem;">
                   <span>Diskon Promo:</span>
-                  <span id="checkout-calc-discount">- Rp 0</span>
+                  <span id="checkout-calc-discount" style="font-weight: 700;">- Rp 0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.35rem;">
                   <span>Biaya Pengiriman:</span>
-                  <span id="checkout-calc-shipping">Gratis (Ambil di Toko)</span>
+                  <span id="checkout-calc-shipping" style="font-weight: 700; color: #1E293B;">Gratis</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.5rem;">
-                  <span>Biaya Layanan:</span>
-                  <span style="color: #16A34A; font-weight: 700;">Gratis (Rp 0)</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 1.18rem; font-weight: 800; color: #0F172A; border-top: 1px dashed #FDBA74; padding-top: 0.5rem;">
-                  <span>Total Pembayaran:</span>
-                  <span id="checkout-calc-total" style="color: #EA580C;">Rp 60.000</span>
+                <div style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: #EA580C; border-top: 1px dashed #FDBA74; padding-top: 0.5rem; margin-top: 0.5rem;">
+                  <span>Total Tagihan:</span>
+                  <span id="checkout-calc-total">Rp 0</span>
                 </div>
               </div>
 
-              <button class="checkout-submit-btn" onclick="AppManager.submitCheckoutOrder()">
-                <span>Konfirmasi & Bayar Sekarang</span> &rarr;
+              <button type="button" class="btn btn-primary btn-lg" style="width: 100%;" onclick="AppManager.submitCheckoutOrder()">
+                🛒 Buat Pesanan & Bayar Sekarang
               </button>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
 
     <!-- ======================================================================
-         SECTION 4: CUSTOM ORDER INTERACTIVE STUDIO
+         SECTION 4: CUSTOM ORDER STUDIO
          ====================================================================== -->
     <section id="section-custom" class="app-section">
       <div class="container">
-        <div class="section-header-row">
+        
+        <div class="section-header-row" style="margin-bottom: 1.5rem;">
           <div>
-            <h2 class="section-title">Custom Order <span class="text-orange">Studio</span></h2>
-            <p class="section-subtitle">Simulasikan desain pakaianmu secara interaktif langsung di browser</p>
+            <h2 class="section-title">Studio <span class="text-orange">Desain Apparel</span></h2>
+            <p class="section-subtitle">Kustomisasi kaos, polo, atau hoodie dengan preview 2D interaktif langsung</p>
           </div>
         </div>
 
         <div class="customizer-workspace">
-          <!-- Left Visual Preview Column -->
+          <!-- Left Visual Canvas Column -->
           <div class="customizer-preview-col">
             <div id="customizer-svg-container" class="customizer-svg-box"></div>
-            
+
+            <!-- Angle Switcher Pills -->
             <div class="customizer-view-switcher">
               <button class="customizer-view-btn active" data-view="front">Depan (Front)</button>
               <button class="customizer-view-btn" data-view="back">Belakang (Back)</button>
@@ -571,16 +597,6 @@
             </div>
 
             <div class="control-group">
-              <label class="control-label">Pilih Clipart / Graphic Ready:</label>
-              <div class="clipart-options-row">
-                <button class="customizer-clipart-btn" data-clipart="star">⭐ Bintang</button>
-                <button class="customizer-clipart-btn" data-clipart="badge">🛡️ Badge VIP</button>
-                <button class="customizer-clipart-btn" data-clipart="skull">💀 Skull Art</button>
-                <button class="customizer-clipart-btn" data-clipart="lion">🦁 Lion Icon</button>
-              </div>
-            </div>
-
-            <div class="control-group">
               <label class="control-label">Pilih Ukuran Baju:</label>
               <select id="customizer-size-select" class="select-input">
                 <option value="S">Ukuran S (Lebar 48cm)</option>
@@ -622,14 +638,19 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 6: LACAK PESANAN (RIWAYAT)
+         SECTION 6: LACAK PESANAN (PELANGGAN)
          ====================================================================== -->
     <section id="section-riwayat" class="app-section">
       <div class="container">
         <div class="section-header-row">
           <div>
             <h2 class="section-title">Lacak <span class="text-orange">Pesanan</span></h2>
-            <p class="section-subtitle">Pantau progres pengerjaan kaos, status konveksi, serta nomor resi ekspedisi</p>
+            <p class="section-subtitle">Pantau seluruh perkembangan pesanan secara real-time mengikuti update dari Admin</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-sm" onclick="AppManager.renderOrderHistory()">
+              🔄 Segarkan Status
+            </button>
           </div>
         </div>
 
@@ -638,7 +659,7 @@
     </section>
 
     <!-- ======================================================================
-         SECTION 7: ARTIKEL (KNOWLEDGE BASE)
+         SECTION 7: ARTIKEL & EDUKASI (INTERACTIVE READING)
          ====================================================================== -->
     <section id="section-artikel" class="app-section">
       <div class="container">
@@ -690,14 +711,562 @@
       </div>
     </section>
 
+    <!-- ======================================================================
+         SECTION 9: CUSTOMER DASHBOARD (DASHBOARD PELANGGAN)
+         ====================================================================== -->
+    <section id="section-customer-dashboard" class="app-section">
+      <div class="container">
+        
+        <!-- Welcome Hero -->
+        <div class="customer-dashboard-hero">
+          <div class="cust-hero-left">
+            <h1>Selamat Datang, <span id="cust-dash-greeting-name">Pelanggan</span>! 👋</h1>
+            <p>Kelola pesanan apparel Anda, pantau pengiriman ekspedisi, dan jelajahi produk custom terbaik Keyspace dari dashboard pribadi Anda.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-lg" onclick="AppManager.navigateTo('katalog')">
+              🛍️ Belanja Lagi
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Metric Cards -->
+        <div class="cust-metrics-row">
+          <div class="cust-metric-card">
+            <div class="icon-box" style="background: #EFF6FF; color: #2563EB;">📦</div>
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; display: block;">Total Pesanan</span>
+              <strong id="cust-metric-total" style="font-size: 1.5rem; font-weight: 800; color: #0F172A;">0</strong>
+            </div>
+          </div>
+
+          <div class="cust-metric-card">
+            <div class="icon-box" style="background: #EDE9FE; color: #7C3AED;">⚙️</div>
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; display: block;">Pesanan Diproses</span>
+              <strong id="cust-metric-diproses" style="font-size: 1.5rem; font-weight: 800; color: #0F172A;">0</strong>
+            </div>
+          </div>
+
+          <div class="cust-metric-card">
+            <div class="icon-box" style="background: #E0F2FE; color: #0284C7;">🚚</div>
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; display: block;">Pesanan Dikirim</span>
+              <strong id="cust-metric-dikirim" style="font-size: 1.5rem; font-weight: 800; color: #0F172A;">0</strong>
+            </div>
+          </div>
+
+          <div class="cust-metric-card">
+            <div class="icon-box" style="background: #DCFCE7; color: #16A34A;">✅</div>
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; display: block;">Pesanan Selesai</span>
+              <strong id="cust-metric-selesai" style="font-size: 1.5rem; font-weight: 800; color: #0F172A;">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders in Customer Dashboard -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title">Pesanan Terbaru Anda</h3>
+            <button class="btn btn-secondary btn-sm" onclick="AppManager.navigateTo('riwayat')">Lihat Semua di Lacak Pesanan &rarr;</button>
+          </div>
+          <div id="cust-dash-recent-orders"></div>
+        </div>
+
+        <!-- Recommended Products -->
+        <div style="margin-top: 2.5rem;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Produk <span class="text-orange">Rekomendasi Untuk Anda</span></h2>
+              <p class="section-subtitle">Pilihan apparel favorit pelanggan lainnya</p>
+            </div>
+          </div>
+          <div class="products-featured-grid" id="cust-dash-recommended-products"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 10: ADMIN DASHBOARD (DASHBOARD ADMIN LENGKAP)
+         ====================================================================== -->
+    <section id="section-admin-dashboard" class="app-section">
+      <div class="admin-shell">
+        
+        <!-- ADMIN SIDEBAR -->
+        <aside class="admin-sidebar">
+          <div class="admin-sidebar-header">
+            <div class="admin-sidebar-brand">
+              <img src="assets/images/keyspace/logo.svg" alt="Keyspace" style="height: 26px;" onerror="this.src='assets/images/keyspace/logo.png';" />
+              <span class="admin-brand-tag">PORTAL ADMIN</span>
+            </div>
+          </div>
+
+          <nav class="admin-sidebar-nav">
+            <div class="admin-nav-item active" data-tab="dashboard" onclick="AppManager.switchAdminTab('dashboard')">
+              <span>📊 Dashboard Utama</span>
+            </div>
+            <div class="admin-nav-item" data-tab="customers" onclick="AppManager.switchAdminTab('customers')">
+              <span>👥 Kelola Pelanggan</span>
+            </div>
+            <div class="admin-nav-item" data-tab="products" onclick="AppManager.switchAdminTab('products')">
+              <span>👕 Kelola Produk</span>
+            </div>
+            <div class="admin-nav-item" data-tab="orders" onclick="AppManager.switchAdminTab('orders')">
+              <span>📦 Kelola Pesanan</span>
+            </div>
+            <div class="admin-nav-item" data-tab="payments" onclick="AppManager.switchAdminTab('payments')">
+              <span>💳 Verifikasi Pembayaran</span>
+            </div>
+            <div class="admin-nav-item" data-tab="tracking" onclick="AppManager.switchAdminTab('tracking')">
+              <span>🚚 Lacak & Ekspedisi</span>
+            </div>
+            <div class="admin-nav-item" data-tab="articles" onclick="AppManager.switchAdminTab('articles')">
+              <span>📝 Kelola Artikel</span>
+            </div>
+            <div class="admin-nav-item" data-tab="reports" onclick="AppManager.switchAdminTab('reports')">
+              <span>📈 Laporan Penjualan</span>
+            </div>
+            <div class="admin-nav-item" data-tab="settings" onclick="AppManager.switchAdminTab('settings')">
+              <span>⚙️ Pengaturan Toko</span>
+            </div>
+          </nav>
+
+          <div class="admin-sidebar-footer">
+            <div class="admin-sidebar-user">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80" style="width: 36px; height: 36px; border-radius: 50%;" />
+              <div style="flex: 1; line-height: 1.2;">
+                <strong style="color: #FFFFFF; font-size: 0.85rem; display: block;">Administrator</strong>
+                <span style="font-size: 0.72rem; color: #94A3B8;">admin@keyspace.id</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" style="padding: 4px 8px; font-size: 0.75rem;" onclick="AppManager.handleLogout()" title="Keluar">Logout</button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ADMIN MAIN AREA -->
+        <div class="admin-main-wrap">
+          <!-- Topbar -->
+          <header class="admin-topbar">
+            <div class="admin-topbar-left">
+              <h2 id="admin-topbar-title" class="admin-page-title">Dashboard Admin</h2>
+            </div>
+            <div class="admin-topbar-actions">
+              <button class="btn btn-secondary btn-sm" onclick="AppManager.navigateTo('home')">
+                🌐 Lihat Website
+              </button>
+            </div>
+          </header>
+
+          <!-- Content Body -->
+          <div class="admin-content-body">
+            
+            <!-- PANE 1: DASHBOARD OVERVIEW -->
+            <div id="admin-pane-dashboard" class="admin-tab-pane">
+              <!-- 8 Statistics Cards -->
+              <div class="admin-metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Total Pelanggan</span>
+                    <span class="metric-value" id="adm-metric-customers">0</span>
+                    <span class="metric-subtext">Akun terdaftar</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #EFF6FF; color: #2563EB;">👥</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Total Produk</span>
+                    <span class="metric-value" id="adm-metric-products">0</span>
+                    <span class="metric-subtext">Katalog aktif</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #FEF3C7; color: #D97706;">👕</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Pesanan Baru</span>
+                    <span class="metric-value" id="adm-metric-neworders">0</span>
+                    <span class="metric-subtext">Perlu ditindaklanjuti</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #FEE2E2; color: #DC2626;">⚡</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Menunggu Konfirmasi</span>
+                    <span class="metric-value" id="adm-metric-pendingpay">0</span>
+                    <span class="metric-subtext">Bukti pembayaran</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #FFEDD5; color: #EA580C;">💳</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Pesanan Diproses</span>
+                    <span class="metric-value" id="adm-metric-diproses">0</span>
+                    <span class="metric-subtext">Sedang di sablon / jahit</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #EDE9FE; color: #7C3AED;">⚙️</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Pesanan Dikirim</span>
+                    <span class="metric-value" id="adm-metric-dikirim">0</span>
+                    <span class="metric-subtext">Dalam kurir / ekspedisi</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #E0F2FE; color: #0284C7;">🚚</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Pesanan Selesai</span>
+                    <span class="metric-value" id="adm-metric-selesai">0</span>
+                    <span class="metric-subtext">Tuntas & diterima</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #DCFCE7; color: #16A34A;">✅</div>
+                </div>
+
+                <div class="metric-card">
+                  <div class="metric-info-box">
+                    <span class="metric-label">Total Transaksi (Omset)</span>
+                    <span class="metric-value" id="adm-metric-omset">Rp 0</span>
+                    <span class="metric-subtext">Pembayaran terverifikasi</span>
+                  </div>
+                  <div class="metric-icon-box" style="background: #ECFCCB; color: #65A30D;">💰</div>
+                </div>
+              </div>
+
+              <!-- Recent Activity Tables -->
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <h3 class="admin-card-title">Aktivitas Pesanan Terbaru</h3>
+                  <button class="btn btn-secondary btn-sm" onclick="AppManager.switchAdminTab('orders')">Kelola Semua Pesanan &rarr;</button>
+                </div>
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>No. Pesanan</th>
+                        <th>Pelanggan</th>
+                        <th>Tanggal</th>
+                        <th>Status Pembayaran</th>
+                        <th>Status Pesanan</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-overview-orders-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 2: KELOLA PELANGGAN -->
+            <div id="admin-pane-customers" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Daftar Pelanggan Terdaftar</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Kelola data pelanggan, riwayat belanja, dan status akun pengguna</p>
+                  </div>
+                </div>
+
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nama Pelanggan</th>
+                        <th>Email</th>
+                        <th>Nomor Telepon</th>
+                        <th>Jumlah Pesanan</th>
+                        <th>Total Belanja</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-customers-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 3: KELOLA PRODUK -->
+            <div id="admin-pane-products" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Katalog Produk & Inventori Apparel</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Atur foto produk, nama, harga, kategori, stok, dan deskripsi</p>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="AppManager.openEditProductModal()">
+                    + Tambah Produk Baru
+                  </button>
+                </div>
+
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Foto</th>
+                        <th>Nama Produk</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Stok / Tipe</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-products-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 4: KELOLA PESANAN & PEMBAYARAN & TRACKING -->
+            <div id="admin-pane-orders" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Semua Pesanan Pelanggan</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Kontrol alur pesanan dari konfirmasi bayar hingga paket sampai dan selesai</p>
+                  </div>
+                </div>
+
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Nomor Pesanan</th>
+                        <th>Pelanggan</th>
+                        <th>Tanggal</th>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Status Pembayaran</th>
+                        <th>Status Pesanan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-orders-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 5: PAYMENTS SHORTCUT -->
+            <div id="admin-pane-payments" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Validasi Bukti Pembayaran</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Klik "Detail & Proses" pada pesanan untuk melihat bukti transfer dan klik [Konfirmasi Pembayaran] atau [Tolak Pembayaran].</p>
+                  </div>
+                </div>
+                <!-- Reuses table logic -->
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Nomor Pesanan</th>
+                        <th>Pelanggan</th>
+                        <th>Tanggal</th>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Status Pembayaran</th>
+                        <th>Status Pesanan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-payments-shortcut-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 6: TRACKING SHORTCUT -->
+            <div id="admin-pane-tracking" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Manajemen Ekspedisi & Tracking Resi</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Perbarui tahapan status (Diproses &rarr; Dikemas &rarr; Dikirim &rarr; Dalam Perjalanan &rarr; Sampai &rarr; Selesai)</p>
+                  </div>
+                </div>
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Nomor Pesanan</th>
+                        <th>Pelanggan</th>
+                        <th>Tanggal</th>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Status Pembayaran</th>
+                        <th>Status Pesanan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-tracking-shortcut-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 7: KELOLA ARTIKEL -->
+            <div id="admin-pane-articles" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <div>
+                    <h3 class="admin-card-title">Kelola Artikel Edukasi Apparel</h3>
+                    <p style="font-size: 0.82rem; color: #64748B;">Tambah, edit, dan publikasikan panduan kain serta tips sablon untuk pelanggan</p>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="AppManager.openEditArticleModal()">
+                    + Tulis Artikel Baru
+                  </button>
+                </div>
+
+                <div class="admin-table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Thumbnail</th>
+                        <th>Judul Artikel</th>
+                        <th>Kategori</th>
+                        <th>Penulis</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="adm-articles-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 8: LAPORAN PENJUALAN -->
+            <div id="admin-pane-reports" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <h3 class="admin-card-title">Laporan Analitik & Performa Penjualan</h3>
+                </div>
+                <div id="adm-reports-summary"></div>
+                <div style="background: #F8FAFC; padding: 1.5rem; border-radius: 10px; border: 1px solid #E2E8F0; text-align: center;">
+                  <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1rem;">Laporan penjualan terintegrasi langsung dengan database pesanan Keyspace.</p>
+                  <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Cetak / Ekspor Laporan PDF</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 9: PENGATURAN TOKO -->
+            <div id="admin-pane-settings" class="admin-tab-pane" style="display: none;">
+              <div class="admin-card">
+                <div class="admin-card-header">
+                  <h3 class="admin-card-title">Pengaturan Identitas & Kontak Toko</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                  <div class="auth-form-field">
+                    <label>Nama Brand / Konveksi</label>
+                    <input type="text" class="checkout-text-input" value="Keyspace.id Apparel Studio" readonly />
+                  </div>
+                  <div class="auth-form-field">
+                    <label>Nomor WhatsApp Customer Service</label>
+                    <input type="text" class="checkout-text-input" value="+62 857-6200-5247" readonly />
+                  </div>
+                  <div class="auth-form-field">
+                    <label>Rekening Bank BCA</label>
+                    <input type="text" class="checkout-text-input" value="8040-192-888 a.n Keyspace Apparel" readonly />
+                  </div>
+                  <div class="auth-form-field">
+                    <label>Alamat Workshop & Store</label>
+                    <input type="text" class="checkout-text-input" value="Jl. Jombang Raya No.42, Tangerang Selatan" readonly />
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="window.showToast?.('Pengaturan toko tersimpan dengan baik.')">Simpan Perubahan</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ==========================================================================
+       SECTION M: SECTION LOKASI KAMI & PETA FOOTER (RESPONSIVE & RAPI)
+       ========================================================================== -->
+  <section id="lokasi-kami" class="workshop-location-section">
+    <div class="container">
+      <div class="location-grid-2cols">
+        <!-- Info Kolom Kiri -->
+        <div class="location-info-card">
+          <span class="location-pill-badge">📍 Workshop & Offline Store</span>
+          <h2 class="location-info-title">
+            Kunjungi Workshop & Studio Cetak <span class="text-orange">Keyspace.id</span>
+          </h2>
+          <p style="font-size: 0.92rem; color: #94A3B8; line-height: 1.6;">
+            Ingin berkonsultasi langsung, melihat katalog bahan kain, mencoba ukuran fitting sample, atau mengambil langsung pesanan apparel Anda? Kunjungi workshop kami di Tangerang Selatan.
+          </p>
+
+          <div class="location-detail-items">
+            <div class="location-item-row">
+              <div class="location-icon-bubble">🏢</div>
+              <div>
+                <strong style="color: #FFFFFF; font-size: 0.95rem; display: block;">Alamat Workshop:</strong>
+                <span style="color: #CBD5E1; font-size: 0.88rem;">Jl. Jombang Raya No.42, Kec. Ciputat, Tangerang Selatan, Banten 15414</span>
+              </div>
+            </div>
+
+            <div class="location-item-row">
+              <div class="location-icon-bubble">🕒</div>
+              <div>
+                <strong style="color: #FFFFFF; font-size: 0.95rem; display: block;">Jam Operasional Workshop:</strong>
+                <span style="color: #CBD5E1; font-size: 0.88rem;">Senin – Sabtu: 08.30 – 21.00 WIB (Minggu: By Appointment)</span>
+              </div>
+            </div>
+
+            <div class="location-item-row">
+              <div class="location-icon-bubble">💬</div>
+              <div>
+                <strong style="color: #FFFFFF; font-size: 0.95rem; display: block;">Kontak WhatsApp:</strong>
+                <span style="color: #CBD5E1; font-size: 0.88rem;">+62 857-6200-5247 (Layanan Konsultasi Cepat)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Peta Interaktif Proporsional -->
+        <div class="location-map-card">
+          <div class="map-embed-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15863.633887965906!2d106.702008!3d-6.275815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fa89e83c2763%3A0x6b107b5a837e2da!2sJl.%20Jombang%20Raya%2C%20Kota%20Tangerang%20Selatan%2C%20Banten!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              title="Peta Lokasi Workshop Keyspace Tangerang Selatan">
+            </iframe>
+          </div>
+          <div class="map-card-footer">
+            <span style="font-size: 0.82rem; color: #CBD5E1;">Tangerang Selatan, Banten</span>
+            <a href="https://maps.google.com/?q=Jl.+Jombang+Raya+Tangerang+Selatan" target="_blank" class="btn btn-primary btn-sm" style="font-size: 0.8rem; padding: 5px 12px;">
+              Buka di Google Maps &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==========================================================================
        PRODUCT DETAIL MODAL
        ========================================================================== -->
   <div id="product-detail-modal" class="modal-overlay">
     <div class="modal-card">
-      <button class="modal-close-btn">&times;</button>
+      <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').classList.remove('active')">&times;</button>
       <div id="modal-detail-content"></div>
     </div>
   </div>
@@ -708,8 +1277,203 @@
   <div id="order-success-modal" class="modal-overlay">
     <div class="modal-card" style="max-width: 540px;">
       <button class="modal-close-btn" onclick="document.getElementById('order-success-modal').classList.remove('active')">&times;</button>
-      <div class="order-success-card" id="order-success-content">
-        <!-- Will be populated dynamically upon checkout -->
+      <div class="order-success-card" id="order-success-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ORDER DETAIL & TRACKING TIMELINE MODAL (PELANGGAN)
+       ========================================================================== -->
+  <div id="order-detail-view-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close-btn" onclick="document.getElementById('order-detail-view-modal').classList.remove('active')">&times;</button>
+      <div id="order-detail-view-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ARTICLE FULL READER MODAL
+       ========================================================================== -->
+  <div id="article-detail-view-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 840px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close-btn" onclick="document.getElementById('article-detail-view-modal').classList.remove('active')">&times;</button>
+      <div id="article-detail-view-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ADMIN GENERIC ACTION MODAL (DETAIL ORDER, EDIT PRODUCT, EDIT ARTICLE)
+       ========================================================================== -->
+  <div id="admin-generic-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 720px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close-btn" onclick="document.getElementById('admin-generic-modal').classList.remove('active')">&times;</button>
+      <div id="admin-generic-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTH MODAL 1: LOGIN (ADMIN & PELANGGAN)
+       ========================================================================== -->
+  <div id="auth-login-modal" class="modal-overlay">
+    <div class="auth-modal-dialog">
+      <button class="modal-close-btn" style="color: #FFFFFF; top: 12px; right: 14px;" onclick="AppManager.closeAuthModal()">&times;</button>
+      <div class="auth-header-band">
+        <img src="assets/images/keyspace/logo.svg" alt="Keyspace" class="auth-brand-logo" onerror="this.src='assets/images/keyspace/logo.png';" />
+        <h3 class="auth-title">Masuk ke Akun Anda</h3>
+        <p class="auth-subtitle">Pilih peran dan nikmati layanan terintegrasi Keyspace</p>
+      </div>
+
+      <div class="auth-body-content">
+        <!-- Role Switcher Tabs -->
+        <div class="auth-role-tabs">
+          <button type="button" id="auth-tab-customer" class="auth-role-btn active" onclick="AppManager.switchAuthTab('customer')">
+            👤 Pelanggan
+          </button>
+          <button type="button" id="auth-tab-admin" class="auth-role-btn" onclick="AppManager.switchAuthTab('admin')">
+            🛡️ Admin Keyspace
+          </button>
+        </div>
+
+        <div id="login-alert-msg" class="auth-alert-msg"></div>
+
+        <form onsubmit="AppManager.handleLoginSubmit(event)">
+          <input type="hidden" id="auth-role-hint" value="customer" />
+          
+          <div class="auth-form-field">
+            <label>Alamat Email / ID Pengguna *</label>
+            <div class="auth-input-wrap">
+              <input type="text" id="login-email" placeholder="budi.santoso@gmail.com" required />
+            </div>
+          </div>
+
+          <div class="auth-form-field">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <label style="margin: 0;">Kata Sandi *</label>
+              <a href="#" style="font-size: 0.75rem; color: #EA580C; font-weight: 700;" onclick="AppManager.openForgotModal()">Lupa Kata Sandi?</a>
+            </div>
+            <div class="auth-input-wrap">
+              <input type="password" id="login-password" placeholder="••••••••" required />
+            </div>
+          </div>
+
+          <button type="submit" class="auth-btn-submit">
+            Masuk Sekarang &rarr;
+          </button>
+        </form>
+
+        <div class="auth-demo-hint">
+          <strong>Kredensial Demo Cepat:</strong><br>
+          • <strong>Admin:</strong> admin@keyspace.id (sandi: admin123)<br>
+          • <strong>Pelanggan:</strong> budi.santoso@gmail.com (sandi: password123)
+        </div>
+
+        <div class="auth-footer-links">
+          <span>Belum memiliki akun Pelanggan? <a href="#" onclick="AppManager.openRegisterModal()">Daftar Sekarang</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTH MODAL 2: REGISTER PELANGGAN
+       ========================================================================== -->
+  <div id="auth-register-modal" class="modal-overlay">
+    <div class="auth-modal-dialog" style="max-width: 500px;">
+      <button class="modal-close-btn" style="color: #FFFFFF; top: 12px; right: 14px;" onclick="AppManager.closeAuthModal()">&times;</button>
+      <div class="auth-header-band">
+        <h3 class="auth-title">Daftar Akun Pelanggan</h3>
+        <p class="auth-subtitle">Nikmati kemudahan pesan apparel, lacak resi, dan promo eksklusif</p>
+      </div>
+
+      <div class="auth-body-content">
+        <div id="reg-alert-msg" class="auth-alert-msg"></div>
+
+        <form onsubmit="AppManager.handleRegisterSubmit(event)">
+          <div class="auth-form-field">
+            <label>Nama Lengkap *</label>
+            <div class="auth-input-wrap">
+              <input type="text" id="reg-name" placeholder="Nama Lengkap Anda" required />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="auth-form-field">
+              <label>Email *</label>
+              <div class="auth-input-wrap">
+                <input type="email" id="reg-email" placeholder="nama@email.com" required />
+              </div>
+            </div>
+            <div class="auth-form-field">
+              <label>No. WhatsApp *</label>
+              <div class="auth-input-wrap">
+                <input type="tel" id="reg-phone" placeholder="08xxxxxxxxxx" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-form-field">
+            <label>Kata Sandi *</label>
+            <div class="auth-input-wrap">
+              <input type="password" id="reg-password" placeholder="Minimal 6 karakter" required />
+            </div>
+          </div>
+
+          <div class="auth-form-field">
+            <label>Alamat Lengkap Pengiriman</label>
+            <div class="auth-input-wrap">
+              <textarea id="reg-address" placeholder="Nama jalan, perumahan, nomor rumah..." rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="auth-form-field">
+            <label>Kota / Kabupaten</label>
+            <div class="auth-input-wrap">
+              <input type="text" id="reg-city" placeholder="Contoh: Tangerang Selatan" />
+            </div>
+          </div>
+
+          <button type="submit" class="auth-btn-submit">
+            Buat Akun Pelanggan Baru &rarr;
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <span>Sudah memiliki akun? <a href="#" onclick="AppManager.openAuthModal('customer')">Masuk di sini</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTH MODAL 3: LUPA PASSWORD
+       ========================================================================== -->
+  <div id="auth-forgot-modal" class="modal-overlay">
+    <div class="auth-modal-dialog">
+      <button class="modal-close-btn" style="color: #FFFFFF; top: 12px; right: 14px;" onclick="AppManager.closeAuthModal()">&times;</button>
+      <div class="auth-header-band">
+        <h3 class="auth-title">Lupa Kata Sandi</h3>
+        <p class="auth-subtitle">Masukkan email Anda untuk menerima instruksi pemulihan</p>
+      </div>
+
+      <div class="auth-body-content">
+        <div id="forgot-alert-msg" class="auth-alert-msg"></div>
+
+        <form onsubmit="AppManager.handleForgotSubmit(event)">
+          <div class="auth-form-field">
+            <label>Alamat Email Terdaftar *</label>
+            <div class="auth-input-wrap">
+              <input type="email" id="forgot-email" placeholder="nama@email.com" required />
+            </div>
+          </div>
+
+          <button type="submit" class="auth-btn-submit">
+            Kirim Link Pemulihan
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <a href="#" onclick="AppManager.openAuthModal('customer')">&larr; Kembali ke Halaman Masuk</a>
+        </div>
       </div>
     </div>
   </div>
@@ -758,14 +1522,14 @@
       <div class="footer-top-grid">
         <!-- Brand Info -->
         <div>
-          <a href="#" class="brand-link" style="margin-bottom: 0.5rem;">
+          <a href="#" class="brand-link" style="margin-bottom: 0.5rem;" onclick="AppManager.navigateTo('home')">
             <img src="assets/images/keyspace/logo.svg" alt="Keyspace" class="brand-logo-img" />
           </a>
           <p class="footer-brand-desc">
             Pusat pembuatan kaos custom DTF, kaos polos cotton combed 30s/24s, polo shirt seragam, hoodie fleece, dan jersey sublimasi tanpa minimum order.
           </p>
           <div style="margin-top: 1rem; color: #CBD5E1; font-size: 0.85rem;">
-            📍 Workshop & Store: Jl. Jombang Raya No.42, Tangerang Selatan<br>
+            📍 Workshop: Jl. Jombang Raya No.42, Tangerang Selatan<br>
             📞 WhatsApp: +62 857-6200-5247
           </div>
         </div>
@@ -774,11 +1538,13 @@
         <div>
           <h4 class="footer-col-title">Navigasi Utama</h4>
           <ul class="footer-links-list">
-            <li><a href="#" onclick="AppManager.navigateTo('home')">Home</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('home')">Beranda</a></li>
             <li><a href="#" onclick="AppManager.navigateTo('katalog')">Katalog Produk</a></li>
             <li><a href="#" onclick="AppManager.navigateTo('custom')">Custom Order Studio</a></li>
             <li><a href="#" onclick="AppManager.navigateTo('portofolio')">Portofolio Produksi</a></li>
             <li><a href="#" onclick="AppManager.navigateTo('riwayat')">Lacak Pesanan</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('artikel')">Artikel & Edukasi</a></li>
+            <li><a href="#" onclick="AppManager.openAuthModal('admin')">Portal Login Admin</a></li>
           </ul>
         </div>
 
@@ -815,6 +1581,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/store.js"></script>
   <script src="assets/js/customizer.js"></script>
   <script src="assets/js/app.js"></script>
 

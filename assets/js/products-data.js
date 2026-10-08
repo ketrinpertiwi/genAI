@@ -248,7 +248,7 @@ const PRODUCTS_DATA = [
     isPreOrder: false,
     rating: 4.96,
     reviewsCount: 215,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Bestseller",
     description: "Hoodie streetwear tebal berbahan katun Fleece 330gsm yang hangat dan lembut di kulit. Dilengkapi saku kanguru dan kupluk ganda.",
     colors: [
@@ -305,7 +305,7 @@ const PRODUCTS_DATA = [
     isPreOrder: true,
     rating: 4.91,
     reviewsCount: 167,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Sublimasi",
     description: "Jersey olahraga dan gaming berbahan Dry-Fit Milano dengan teknologi sirkulasi udara micro-mesh. Cetak full sublimation anti pudar.",
     colors: [
@@ -361,7 +361,7 @@ const PRODUCTS_DATA = [
     isPreOrder: true,
     rating: 4.89,
     reviewsCount: 94,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Bordir",
     description: "Kemeja berbahan Oxford Cotton premium yang adem, rapi, dan mudah disetrika. Bisa disematkan bordir komputer logo kantor atau komunitas.",
     colors: [
@@ -418,7 +418,7 @@ const PRODUCTS_DATA = [
     isPreOrder: false,
     rating: 4.93,
     reviewsCount: 240,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Eco Bag",
     description: "Totebag kanvas tebal ramah lingkungan dengan penutup resleting dan saku dalam. Cocok untuk merchandise kantor, souvenir seminar, atau tas harian.",
     colors: [
@@ -475,7 +475,7 @@ const PRODUCTS_DATA = [
     isPreOrder: true,
     rating: 4.88,
     reviewsCount: 110,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Bordir 3D",
     description: "Topi baseball bahan Katun Twill tebal dengan strap pengatur ukuran di belakang. Hasil bordir komputer timbul 3D presisi tinggi.",
     colors: [
@@ -531,7 +531,7 @@ const PRODUCTS_DATA = [
     isPreOrder: false,
     rating: 4.97,
     reviewsCount: 318,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Vintage",
     description: "Kaos band gaya vintage retro dengan efek washed dan sablon plastisol discharge bertekstur lembut tanpa efek kaku.",
     colors: [
@@ -585,7 +585,7 @@ const PRODUCTS_DATA = [
     isPreOrder: false,
     rating: 4.93,
     reviewsCount: 184,
-    isFeatured: false,
+    isFeatured: true,
     badge: "Graphic Art",
     description: "Kaos ilustrasi dan tipografi streetwear kekinian. Potongan oversized fit dengan bahan Cotton Combed 24s mantap dan tidak terawang.",
     colors: [
