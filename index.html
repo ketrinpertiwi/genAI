@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keyspace.id - Konveksi & Vendor Pembuatan Kaos Polos, Kaos Custom DTF, Polo Shirt, Hoodie, Jersey & Apparel Berkualitas Terbaik Tanpa Minimum Order.">
+  <meta name="keywords" content="keyspace, sablon kaos custom, kaos polos combed 30s, kaos polos combed 24s, poloshirt custom, konveksi baju murah">
+  <meta name="author" content="Keyspace Indonesia">
+  <title>Keyspace.id | Solusi Custom Apparel & Kaos Polos Berkualitas</title>
+
+  <!-- Google Fonts & Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/keyspace/logo.svg">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo: KEYSPACE -->
+      <a href="#" class="brand-link" onclick="AppManager.navigateTo('home')">
+        <img src="assets/images/keyspace/logo.svg" alt="Keyspace" class="brand-logo-img" onerror="this.src='assets/images/keyspace/logo.png';" />
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+          <li><a href="#" class="nav-link" data-target="katalog">Katalog</a></li>
+          <li><a href="#" class="nav-link" data-target="custom">Custom Order</a></li>
+          <li><a href="#" class="nav-link" data-target="portofolio">Portofolio</a></li>
+          <li><a href="#" class="nav-link" data-target="riwayat">Lacak Pesanan</a></li>
+          <li><a href="#" class="nav-link" data-target="artikel">Artikel</a></li>
+          <li><a href="#" class="nav-link" data-target="tentang">Tentang Kami</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions on Right -->
+      <div class="nav-actions">
+        <!-- Search Button -->
+        <button id="open-search-btn" class="nav-search-btn" title="Pencarian Produk" onclick="AppManager.openSearchModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+
+        <!-- Keranjang Button with Border & Count -->
+        <button id="open-cart-btn" class="nav-cart-btn" title="Keranjang Belanja">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span>Keranjang</span>
+          <span id="cart-count-badge" class="cart-counter-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Hubungi Kami Button (Golden Yellow Pill with Live Pulse Dot) -->
+        <a href="https://wa.me/6285762005247?text=Halo%20Keyspace,%20saya%20ingin%20konsultasi%20pemesanan%20kaos" target="_blank" class="nav-contact-btn">
+          <span class="live-dot"></span>
+          <span>Hubungi Kami</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP BUTTON
+       ========================================================================== -->
+  <a href="https://wa.me/6285762005247?text=Halo%20Keyspace,%20saya%20ingin%20tanya%20produk%20dan%20order" target="_blank" class="whatsapp-floating-widget" title="Chat via WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.711 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ==========================================================================
+       MAIN VIEW CONTAINER
+       ========================================================================== -->
+  <main>
+
+    <!-- ======================================================================
+         SECTION 1: HOME (BERANDA)
+         ====================================================================== -->
+    <section id="section-home" class="app-section active">
+      <div class="container">
+
+        <!-- 1. INTERACTIVE SLIDEABLE HERO BANNER (Dapat Digeser) -->
+        <div class="hero-slider-section">
+          <div class="hero-slider-wrapper" id="hero-slider-wrapper">
+            <div class="hero-slides-track" id="hero-slides-track">
+              <!-- Slide 1: Streetwear -->
+              <div class="hero-slide-item">
+                <img src="assets/images/keyspace/slide_streetwear.jpg" alt="Koleksi Kaos Polos Keyspace.id - Soft Tee Kaos Polos Combed 30s" class="hero-slide-img" />
+              </div>
+              <!-- Slide 2: Custom Sablon DTF -->
+              <div class="hero-slide-item">
+                <img src="assets/images/keyspace/slide_custom_dtf.jpg" alt="Custom Sablon DTF Premium Keyspace.id" class="hero-slide-img" />
+              </div>
+              <!-- Slide 3: Polo Shirt & Corporate -->
+              <div class="hero-slide-item">
+                <img src="assets/images/keyspace/slide_polo_corporate.jpg" alt="Polo Shirt Lacoste Pique Keyspace.id" class="hero-slide-img" />
+              </div>
+            </div>
+            
+            <!-- Controls (Left / Right Arrow) -->
+            <button class="hero-nav-arrow hero-nav-prev" id="hero-prev-btn" aria-label="Slide sebelumnya">&#8249;</button>
+            <button class="hero-nav-arrow hero-nav-next" id="hero-next-btn" aria-label="Slide berikutnya">&#8250;</button>
+
+            <!-- Bottom Slider Indicator Pills (Bisa Diklik) -->
+            <div class="hero-indicators-bar" id="hero-indicators-container">
+              <button class="hero-indicator-btn active" data-slide="0" aria-label="Slide 1"></button>
+              <button class="hero-indicator-btn" data-slide="1" aria-label="Slide 2"></button>
+              <button class="hero-indicator-btn" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. KATEGORI PRODUK -->
+        <div style="margin-top: 2.5rem;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Kategori <span class="text-orange">Produk</span></h2>
+              <p class="section-subtitle">Temukan produk sesuai kebutuhanmu</p>
+            </div>
+            <a href="#" class="section-link-more" onclick="AppManager.navigateTo('katalog')">
+              Lihat Semua &rarr;
+            </a>
+          </div>
+
+          <div class="categories-horizontal-wrap">
+            <div class="categories-scroll-list" id="keyspace-categories-row"></div>
+          </div>
+        </div>
+
+        <!-- 3. PRODUK UNGGULAN -->
+        <div style="margin-top: 2rem;">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Produk <span class="text-orange">Unggulan</span></h2>
+              <p class="section-subtitle">Pilihan terlaris dan terpopuler</p>
+            </div>
+          </div>
+
+          <div class="products-featured-grid" id="keyspace-featured-products"></div>
+        </div>
+
+        <!-- 4. CUSTOM ORDER CALL-TO-ACTION BANNER -->
+        <div class="custom-order-cta-section">
+          <div class="custom-order-cta-banner">
+            <div class="custom-order-cta-content">
+              <p class="custom-order-cta-text">
+                Sablon, bordir, all-over print untuk komunitas, perusahaan, atau event besar.
+              </p>
+              
+              <div class="custom-order-pill-tags">
+                <span class="custom-pill-tag">Sablon DTF</span>
+                <span class="custom-pill-tag">Bordir</span>
+                <span class="custom-pill-tag">MOQ Fleksibel</span>
+                <span class="custom-pill-tag">Garansi Reject</span>
+              </div>
+
+              <button class="custom-order-btn-cta" onclick="AppManager.navigateTo('custom')">
+                <span>Minta Penawaran</span> &rarr;
+              </button>
+            </div>
+
+            <div class="custom-order-illustration">
+              <div class="sewing-icon-box" style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🧵</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. PORTOFOLIO KAMI -->
+        <div class="portfolio-kami-section">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Portofolio <span class="text-orange">Kami</span></h2>
+            </div>
+          </div>
+
+          <div class="portfolio-grid-cards" id="keyspace-portfolio-grid"></div>
+
+          <!-- Centered Dark Navy Button -->
+          <div class="portfolio-view-all-wrap">
+            <button class="btn-portfolio-all" onclick="AppManager.navigateTo('portofolio')">
+              <span>Lihat Semua Portofolio</span> &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. VALUE PROPOSITION / 4 PILLARS -->
+        <div class="pillars-section">
+          <div class="pillars-grid" id="keyspace-pillars-grid"></div>
+        </div>
+
+        <!-- 7. DIPERCAYA OLEH RATUSAN KLIEN -->
+        <div class="clients-trust-section">
+          <div class="clients-top-dots">
+            <span class="client-dot"></span>
+            <span class="client-dot dot-gold"></span>
+            <span class="client-dot"></span>
+          </div>
+
+          <h2 class="clients-title">
+            Dipercaya oleh <span class="text-orange">ratusan klien</span> dari seluruh Indonesia
+          </h2>
+          <p class="clients-subtitle">
+            Komunitas, perusahaan, organisasi, dan event dari Sabang sampai Merauke
+          </p>
+
+          <div class="clients-logo-cards-row" id="keyspace-clients-logos"></div>
+        </div>
+
+        <!-- 8. YANG MEREKA BILANG -->
+        <div class="testimonials-section">
+          <div class="testimonials-header-row">
+            <div>
+              <h2 class="section-title">Yang Mereka <span class="text-orange">Bilang</span></h2>
+              <p class="section-subtitle">Dipercaya oleh ratusan klien dari berbagai platform</p>
+            </div>
+            <div class="testimonials-arrows-ctrl">
+              <button class="t-arrow-btn" onclick="AppManager.prevTestimonial()" aria-label="Review sebelumnya">&#8249;</button>
+              <button class="t-arrow-btn active-dark" onclick="AppManager.nextTestimonial()" aria-label="Review berikutnya">&#8250;</button>
+            </div>
+          </div>
+
+          <div class="testimonials-grid-cards" id="keyspace-testimonials-grid"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: KATALOG PRODUK (Matching media_1791362695147.png)
+         ====================================================================== -->
+    <section id="section-katalog" class="app-section">
+      <div class="container">
+        
+        <div class="catalog-page-layout">
+          <!-- Top Search Bar -->
+          <div class="catalog-search-top-bar">
+            <svg class="catalog-search-icon-inside" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="catalog-main-search-input" class="catalog-search-top-input" placeholder="Cari produk..." />
+          </div>
+
+          <!-- Sorting Pills Bar -->
+          <div class="catalog-sort-pills-bar">
+            <span class="catalog-sort-label">Urutkan</span>
+            <button class="sort-pill-btn active" data-sort="populer" onclick="AppManager.changeSort('populer')">Populer</button>
+            <button class="sort-pill-btn" data-sort="terbaru" onclick="AppManager.changeSort('terbaru')">Terbaru</button>
+            <button class="sort-pill-btn" data-sort="terlaris" onclick="AppManager.changeSort('terlaris')">Terlaris</button>
+            
+            <select class="sort-dropdown-select" id="catalog-sort-dropdown" onchange="AppManager.changeSort(this.value)">
+              <option value="populer">Harga ▾</option>
+              <option value="price-low">Harga: Rendah ke Tinggi</option>
+              <option value="price-high">Harga: Tinggi ke Rendah</option>
+            </select>
+          </div>
+
+          <!-- Content Columns: Left Sidebar Kategori + Right Products Grid -->
+          <div class="catalog-content-columns">
+            <!-- Left Sidebar Kategori -->
+            <aside class="catalog-sidebar-card">
+              <div class="sidebar-category-header">KATEGORI</div>
+              <ul class="sidebar-category-list" id="catalog-sidebar-categories">
+                <!-- Will be populated dynamically: Semua, Kaos Custom, Kaos Polos, etc. -->
+              </ul>
+            </aside>
+
+            <!-- Right Main Area -->
+            <main class="catalog-main-area">
+              <div class="catalog-count-badge" id="catalog-items-count-text">23 produk ditemukan</div>
+              <div class="catalog-grid-4cols" id="catalog-products-grid"></div>
+            </main>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: CHECKOUT PAGE (Matching media_1791362679224.png)
+         ====================================================================== -->
+    <section id="section-checkout" class="app-section">
+      <div class="container checkout-wrapper">
+        <h1 class="checkout-page-title">Checkout</h1>
+
+        <div class="checkout-grid-2cols">
+          <!-- LEFT COLUMN: Ringkasan Pesanan & Metode Pengiriman -->
+          <div class="checkout-col-left">
+            <!-- 1. Ringkasan Pesanan -->
+            <div class="checkout-card">
+              <div class="checkout-card-header" onclick="AppManager.toggleCheckoutAccordion()">
+                <h3 class="checkout-card-title" id="checkout-summary-title">Ringkasan Pesanan (1 produk)</h3>
+                <span class="checkout-accordion-arrow" id="checkout-accordion-arrow">▲</span>
+              </div>
+              <div id="checkout-order-items-list">
+                <!-- Dynamic Items from Cart -->
+              </div>
+              <div class="checkout-subtotal-row">
+                <span>Subtotal</span>
+                <span id="checkout-subtotal-amount">Rp 60.000</span>
+              </div>
+            </div>
+
+            <!-- 2. Metode Pengiriman -->
+            <div class="checkout-card">
+              <h3 class="checkout-card-title" style="margin-bottom: 1rem;">Metode Pengiriman</h3>
+              
+              <!-- Option 1: Ambil di Toko -->
+              <div class="checkout-option-card selected" id="opt-shipping-store" onclick="AppManager.selectShippingMethod('store')">
+                <input type="radio" name="shippingMethod" id="radio-store" class="checkout-radio-input" checked />
+                <div>
+                  <label for="radio-store" class="checkout-option-label">🏬 Ambil Langsung di Workshop</label>
+                  <p class="checkout-option-desc">Jl. Jombang Raya No.42, Tangerang Selatan — Gratis (Rp 0)</p>
+                </div>
+              </div>
+
+              <!-- Option 2: Kurir Reguler -->
+              <div class="checkout-option-card" id="opt-shipping-regular" onclick="AppManager.selectShippingMethod('regular')">
+                <input type="radio" name="shippingMethod" id="radio-regular" class="checkout-radio-input" />
+                <div>
+                  <label for="radio-regular" class="checkout-option-label">🚚 Kurir Reguler (SiCepat / J&T / JNE)</label>
+                  <p class="checkout-option-desc">Estimasi 2-3 hari kerja — Rp 15.000</p>
+                </div>
+              </div>
+
+              <!-- Option 3: Kurir Express -->
+              <div class="checkout-option-card" id="opt-shipping-express" onclick="AppManager.selectShippingMethod('express')">
+                <input type="radio" name="shippingMethod" id="radio-express" class="checkout-radio-input" />
+                <div>
+                  <label for="radio-express" class="checkout-option-label">⚡ Kurir Express 1 Hari (JNE YES / Paxel)</label>
+                  <p class="checkout-option-desc">Estimasi 1 hari kerja sampai — Rp 25.000</p>
+                </div>
+              </div>
+
+              <!-- Address Form (shown when delivery selected) -->
+              <div id="delivery-address-form" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #F1F5F9;">
+                <div class="checkout-form-group">
+                  <label class="checkout-form-label">Alamat Lengkap Penerima *</label>
+                  <textarea id="checkout-shipping-address" class="checkout-textarea" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan..."></textarea>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                  <div class="checkout-form-group">
+                    <label class="checkout-form-label">Kota / Kabupaten *</label>
+                    <input type="text" id="checkout-shipping-city" class="checkout-text-input" placeholder="Kota / Kabupaten" />
+                  </div>
+                  <div class="checkout-form-group">
+                    <label class="checkout-form-label">Kode Pos</label>
+                    <input type="text" id="checkout-shipping-postal" class="checkout-text-input" placeholder="Contoh: 15414" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Data Pemesan & Metode Pembayaran -->
+          <div class="checkout-col-right">
+            <!-- 1. Data Pemesan -->
+            <div class="checkout-card">
+              <h3 class="checkout-card-title" style="margin-bottom: 1.25rem;">Data Pemesan</h3>
+              
+              <div class="checkout-form-group">
+                <label class="checkout-form-label">Nama Lengkap *</label>
+                <input type="text" id="checkout-customer-name" class="checkout-text-input" placeholder="Masukkan nama lengkap" required />
+              </div>
+
+              <div class="checkout-form-group">
+                <label class="checkout-form-label">Nomor WhatsApp *</label>
+                <input type="tel" id="checkout-customer-phone" class="checkout-text-input" placeholder="08xxxxxxxxxx" required />
+              </div>
+
+              <div class="checkout-form-group">
+                <label class="checkout-form-label">Email (opsional)</label>
+                <input type="email" id="checkout-customer-email" class="checkout-text-input" placeholder="email@contoh.com" />
+              </div>
+
+              <div class="checkout-form-group">
+                <label class="checkout-form-label">Catatan Pesanan (opsional)</label>
+                <textarea id="checkout-customer-notes" class="checkout-textarea" placeholder="Contoh: letak sablon dada kiri 10cm, warna sablon putih solid"></textarea>
+              </div>
+            </div>
+
+            <!-- 2. Metode Pembayaran -->
+            <div class="checkout-card">
+              <h3 class="checkout-card-title" style="margin-bottom: 1rem;">Metode Pembayaran</h3>
+
+              <!-- Option 1: QRIS Instant -->
+              <div class="checkout-option-card selected" id="opt-pay-online" onclick="AppManager.selectPaymentMethod('online')">
+                <input type="radio" name="paymentMethod" id="radio-pay-online" class="checkout-radio-input" checked />
+                <div>
+                  <label for="radio-pay-online" class="checkout-option-label">📱 QRIS Instant / All e-Wallet</label>
+                  <p class="checkout-option-desc">GoPay, OVO, Dana, ShopeePay, BCA Mobile — Verifikasi Instan</p>
+                </div>
+              </div>
+
+              <!-- Option 2: Transfer Bank BCA -->
+              <div class="checkout-option-card" id="opt-pay-bank" onclick="AppManager.selectPaymentMethod('bank')">
+                <input type="radio" name="paymentMethod" id="radio-pay-bank" class="checkout-radio-input" />
+                <div>
+                  <label for="radio-pay-bank" class="checkout-option-label">🏦 Transfer Bank BCA</label>
+                  <p class="checkout-option-desc">Rekening: 8040-192-888 a.n Keyspace Apparel Studio</p>
+                </div>
+              </div>
+
+              <!-- Option 3: Virtual Account -->
+              <div class="checkout-option-card" id="opt-pay-va" onclick="AppManager.selectPaymentMethod('va')">
+                <input type="radio" name="paymentMethod" id="radio-pay-va" class="checkout-radio-input" />
+                <div>
+                  <label for="radio-pay-va" class="checkout-option-label">🔢 Virtual Account (BCA / Mandiri / BRI)</label>
+                  <p class="checkout-option-desc">Nomor VA otomatis terbit setelah pesanan dibuat</p>
+                </div>
+              </div>
+
+              <!-- Option 4: COD di Workshop -->
+              <div class="checkout-option-card" id="opt-pay-cod" onclick="AppManager.selectPaymentMethod('cod')">
+                <input type="radio" name="paymentMethod" id="radio-pay-cod" class="checkout-radio-input" />
+                <div>
+                  <label for="radio-pay-cod" class="checkout-option-label">💵 COD / Bayar Tunai di Workshop</label>
+                  <p class="checkout-option-desc">Bayar langsung di workshop saat fitting atau serah terima</p>
+                </div>
+              </div>
+
+              <!-- Voucher Promo Input -->
+              <div style="margin: 1.25rem 0 0.5rem; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.75rem;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.35rem;">Punya Kode Promo / Voucher?</label>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="text" id="checkout-voucher-input" placeholder="Contoh: KEYSPACE10" class="checkout-text-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem; text-transform: uppercase;" />
+                  <button type="button" class="btn btn-dark btn-sm" style="padding: 0.4rem 0.85rem; font-size: 0.82rem; white-space: nowrap;" onclick="AppManager.applyCheckoutVoucher()">Gunakan</button>
+                </div>
+                <div id="checkout-voucher-msg" style="font-size: 0.78rem; margin-top: 0.35rem;"></div>
+              </div>
+
+              <!-- Payment Summary & Submit -->
+              <div style="background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 8px; padding: 1rem; margin: 1rem 0 1.25rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.35rem;">
+                  <span>Subtotal Produk:</span>
+                  <span id="checkout-calc-subtotal">Rp 60.000</span>
+                </div>
+                <div id="checkout-discount-row" style="display: none; justify-content: space-between; font-size: 0.88rem; color: #16A34A; margin-bottom: 0.35rem; font-weight: 700;">
+                  <span>Diskon Promo:</span>
+                  <span id="checkout-calc-discount">- Rp 0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.35rem;">
+                  <span>Biaya Pengiriman:</span>
+                  <span id="checkout-calc-shipping">Gratis (Ambil di Toko)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; color: #64748B; margin-bottom: 0.5rem;">
+                  <span>Biaya Layanan:</span>
+                  <span style="color: #16A34A; font-weight: 700;">Gratis (Rp 0)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 1.18rem; font-weight: 800; color: #0F172A; border-top: 1px dashed #FDBA74; padding-top: 0.5rem;">
+                  <span>Total Pembayaran:</span>
+                  <span id="checkout-calc-total" style="color: #EA580C;">Rp 60.000</span>
+                </div>
+              </div>
+
+              <button class="checkout-submit-btn" onclick="AppManager.submitCheckoutOrder()">
+                <span>Konfirmasi & Bayar Sekarang</span> &rarr;
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: CUSTOM ORDER INTERACTIVE STUDIO
+         ====================================================================== -->
+    <section id="section-custom" class="app-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Custom Order <span class="text-orange">Studio</span></h2>
+            <p class="section-subtitle">Simulasikan desain pakaianmu secara interaktif langsung di browser</p>
+          </div>
+        </div>
+
+        <div class="customizer-workspace">
+          <!-- Left Visual Preview Column -->
+          <div class="customizer-preview-col">
+            <div id="customizer-svg-container" class="customizer-svg-box"></div>
+            
+            <div class="customizer-view-switcher">
+              <button class="customizer-view-btn active" data-view="front">Depan (Front)</button>
+              <button class="customizer-view-btn" data-view="back">Belakang (Back)</button>
+              <button class="customizer-view-btn" data-view="chest">Dada Kiri (Logo)</button>
+              <button class="customizer-view-btn" data-view="sleeve">Lengan (Sleeve)</button>
+            </div>
+          </div>
+
+          <!-- Right Controls Panel Column -->
+          <div class="customizer-controls-col">
+            <h3 class="customizer-panel-title">Pengaturan Desain Apparel</h3>
+
+            <div class="control-group">
+              <label class="control-label">Jenis Produk Apparel:</label>
+              <select id="customizer-product-type" class="select-input">
+                <option value="kaos">Kaos Polos Cotton Combed 30s</option>
+                <option value="hoodie">Hoodie Sweatshirt Fleece 330gsm</option>
+                <option value="polo">Polo Shirt Cotton Pique Classic</option>
+                <option value="jersey">Custom Athletic Dry-Fit Jersey</option>
+                <option value="totebag">Heavy Canvas Eco Tote Bag</option>
+                <option value="topi">Custom Embroidered Snapback Cap</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Warna Bahan / Garment:</label>
+              <div class="color-swatches-grid">
+                <button class="customizer-color-btn active" style="background-color: #1A1A1A;" data-color="#1A1A1A" title="Hitam"></button>
+                <button class="customizer-color-btn" style="background-color: #FFFFFF;" data-color="#FFFFFF" title="Putih"></button>
+                <button class="customizer-color-btn" style="background-color: #1B2A4A;" data-color="#1B2A4A" title="Navy"></button>
+                <button class="customizer-color-btn" style="background-color: #5B121A;" data-color="#5B121A" title="Maroon"></button>
+                <button class="customizer-color-btn" style="background-color: #3B4A34;" data-color="#3B4A34" title="Olive"></button>
+                <button class="customizer-color-btn" style="background-color: #D4A373;" data-color="#D4A373" title="Mustard"></button>
+                <button class="customizer-color-btn" style="background-color: #A8A8A8;" data-color="#A8A8A8" title="Heather Grey"></button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Teks Custom Sablon:</label>
+              <input type="text" id="customizer-text-input" class="text-input" value="KEYSPACE CUSTOM" placeholder="Ketik tulisan sablon di sini..." />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="control-group">
+                <label class="control-label">Gaya Font:</label>
+                <select id="customizer-font-select" class="select-input">
+                  <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+                  <option value="Bebas Neue">Bebas Neue Heavy</option>
+                  <option value="Fredoka">Fredoka Rounded</option>
+                  <option value="Impact">Impact Bold</option>
+                  <option value="Georgia">Classic Serif</option>
+                </select>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Warna Teks:</label>
+                <input type="color" id="customizer-text-color" class="select-input" value="#FFA800" style="height: 42px; padding: 2px;" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="control-group">
+                <label class="control-label">Ukuran Teks:</label>
+                <input type="range" id="customizer-text-size" min="14" max="48" value="24" />
+              </div>
+              <div class="control-group">
+                <label class="control-label">Rotasi Teks:</label>
+                <input type="range" id="customizer-text-rotate" min="-180" max="180" value="0" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Upload Gambar / Logo Anda:</label>
+              <input type="file" id="customizer-image-upload" accept="image/*" class="text-input" />
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Pilih Clipart / Graphic Ready:</label>
+              <div class="clipart-options-row">
+                <button class="customizer-clipart-btn" data-clipart="star">⭐ Bintang</button>
+                <button class="customizer-clipart-btn" data-clipart="badge">🛡️ Badge VIP</button>
+                <button class="customizer-clipart-btn" data-clipart="skull">💀 Skull Art</button>
+                <button class="customizer-clipart-btn" data-clipart="lion">🦁 Lion Icon</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Pilih Ukuran Baju:</label>
+              <select id="customizer-size-select" class="select-input">
+                <option value="S">Ukuran S (Lebar 48cm)</option>
+                <option value="M">Ukuran M (Lebar 50cm)</option>
+                <option value="L" selected>Ukuran L (Lebar 52cm)</option>
+                <option value="XL">Ukuran XL (Lebar 54cm)</option>
+                <option value="XXL">Ukuran XXL (Lebar 58cm)</option>
+              </select>
+            </div>
+
+            <div class="customizer-price-summary">
+              <div>
+                <span style="font-size: 0.85rem; color: #64748B;">Estimasi Biaya Cetak:</span>
+                <div id="customizer-total-price" class="price-summary-val">Rp 80.000</div>
+              </div>
+              <button id="customizer-add-cart-btn" class="btn btn-primary btn-lg">
+                🛒 Tambahkan ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: PORTOFOLIO LENGKAP
+         ====================================================================== -->
+    <section id="section-portofolio" class="app-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Portofolio <span class="text-orange">Produksi</span></h2>
+            <p class="section-subtitle">Galeri hasil cetak nyata pesanan klien korporat, komunitas, dan event nasional</p>
+          </div>
+        </div>
+
+        <div id="portfolio-full-grid" class="products-featured-grid" style="grid-template-columns: repeat(3, 1fr);"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: LACAK PESANAN (RIWAYAT)
+         ====================================================================== -->
+    <section id="section-riwayat" class="app-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Lacak <span class="text-orange">Pesanan</span></h2>
+            <p class="section-subtitle">Pantau progres pengerjaan kaos, status konveksi, serta nomor resi ekspedisi</p>
+          </div>
+        </div>
+
+        <div id="order-history-list" class="order-history-list"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: ARTIKEL (KNOWLEDGE BASE)
+         ====================================================================== -->
+    <section id="section-artikel" class="app-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Artikel & <span class="text-orange">Edukasi</span></h2>
+            <p class="section-subtitle">Panduan bahan kain, tips memilih teknik sablon, dan informasi konveksi</p>
+          </div>
+        </div>
+
+        <div id="articles-grid" class="products-featured-grid" style="grid-template-columns: repeat(3, 1fr);"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 8: TENTANG KAMI
+         ====================================================================== -->
+    <section id="section-tentang" class="app-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Tentang <span class="text-orange">Keyspace</span></h2>
+            <p class="section-subtitle">Vendor sablon dan custom apparel terpercaya di Indonesia</p>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 16px; padding: 2.5rem; box-shadow: var(--shadow-sm); line-height: 1.8;">
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: #0F172A; margin-bottom: 1rem;">
+            Solusi Kebutuhan Kaos Polos & Custom Apparel Tanpa Repot
+          </h3>
+          <p style="color: #475569; margin-bottom: 1.25rem;">
+            <strong>Keyspace.id</strong> adalah konveksi dan studio sablon modern yang melayani pembuatan beragam produk apparel mulai dari kaos polos Combed 30s & 24s, polo shirt, hoodie, jersey full printing, totebag, hingga topi. Kami menggabungkan bahan katun pilihan dengan teknologi cetak Direct-To-Film (DTF) resolusi tinggi dan bordir komputer otomatis untuk menjamin hasil yang rapi, presisi, dan tahan lama.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+            <div style="background: #F8FAFC; border: 1px solid var(--border-light); border-radius: 10px; padding: 1.25rem;">
+              <h4 style="font-weight: 800; color: #1E293B; margin-bottom: 0.4rem;">🏭 Workshop Sendiri</h4>
+              <p style="font-size: 0.85rem; color: #64748B;">Didukung mesin sablon industri modern dan tenaga jahit berpengalaman.</p>
+            </div>
+            <div style="background: #F8FAFC; border: 1px solid var(--border-light); border-radius: 10px; padding: 1.25rem;">
+              <h4 style="font-weight: 800; color: #1E293B; margin-bottom: 0.4rem;">🛡️ Garansi Reject 100%</h4>
+              <p style="font-size: 0.85rem; color: #64748B;">Produk cacat produksi atau tidak sesuai spesifikasi kami ganti baru penuh.</p>
+            </div>
+            <div style="background: #F8FAFC; border: 1px solid var(--border-light); border-radius: 10px; padding: 1.25rem;">
+              <h4 style="font-weight: 800; color: #1E293B; margin-bottom: 0.4rem;">🚚 Pengiriman Nasional</h4>
+              <p style="font-size: 0.85rem; color: #64748B;">Bekerja sama dengan J&T, JNE, SiCepat, Cargo untuk pengiriman ke seluruh Indonesia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       PRODUCT DETAIL MODAL
+       ========================================================================== -->
+  <div id="product-detail-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close-btn">&times;</button>
+      <div id="modal-detail-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ORDER SUCCESS / INVOICE MODAL
+       ========================================================================== -->
+  <div id="order-success-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <button class="modal-close-btn" onclick="document.getElementById('order-success-modal').classList.remove('active')">&times;</button>
+      <div class="order-success-card" id="order-success-content">
+        <!-- Will be populated dynamically upon checkout -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SHOPPING CART DRAWER
+       ========================================================================== -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title">Keranjang Belanja</h3>
+      <button id="close-cart-btn" class="modal-close-btn" style="position: static;">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total-row">
+        <span>Total Pembayaran:</span>
+        <span id="cart-drawer-total" style="color: var(--keyspace-yellow);">Rp 0</span>
+      </div>
+      <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="AppManager.openCheckout();">
+        🚀 Lanjut ke Pembayaran (Checkout)
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SEARCH MODAL
+       ========================================================================== -->
+  <div id="search-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 550px; padding: 1.5rem;">
+      <button class="modal-close-btn" onclick="AppManager.closeSearchModal()">&times;</button>
+      <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem;">Cari Produk di Keyspace</h3>
+      <div class="search-field-input-box" style="margin-bottom: 1rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="quick-search-input" placeholder="Ketik kaos combed, polo, hoodie..." onkeyup="AppManager.handleQuickSearch(event)" />
+      </div>
+      <div id="quick-search-results" style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 250px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer-wrap">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Info -->
+        <div>
+          <a href="#" class="brand-link" style="margin-bottom: 0.5rem;">
+            <img src="assets/images/keyspace/logo.svg" alt="Keyspace" class="brand-logo-img" />
+          </a>
+          <p class="footer-brand-desc">
+            Pusat pembuatan kaos custom DTF, kaos polos cotton combed 30s/24s, polo shirt seragam, hoodie fleece, dan jersey sublimasi tanpa minimum order.
+          </p>
+          <div style="margin-top: 1rem; color: #CBD5E1; font-size: 0.85rem;">
+            📍 Workshop & Store: Jl. Jombang Raya No.42, Tangerang Selatan<br>
+            📞 WhatsApp: +62 857-6200-5247
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">Navigasi Utama</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" onclick="AppManager.navigateTo('home')">Home</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('katalog')">Katalog Produk</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('custom')">Custom Order Studio</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('portofolio')">Portofolio Produksi</a></li>
+            <li><a href="#" onclick="AppManager.navigateTo('riwayat')">Lacak Pesanan</a></li>
+          </ul>
+        </div>
+
+        <!-- Kategori Populer -->
+        <div>
+          <h4 class="footer-col-title">Kategori Populer</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" onclick="AppManager.filterByCategory('kaos-polos')">Kaos Polos Combed 30s</a></li>
+            <li><a href="#" onclick="AppManager.filterByCategory('kaos-custom')">Sablon Kaos Custom DTF</a></li>
+            <li><a href="#" onclick="AppManager.filterByCategory('polo-shirt')">Polo Shirt Lacoste Pique</a></li>
+            <li><a href="#" onclick="AppManager.filterByCategory('hoodie')">Hoodie Fleece 330gsm</a></li>
+            <li><a href="#" onclick="AppManager.filterByCategory('jersey')">Jersey Sports & Esports</a></li>
+          </ul>
+        </div>
+
+        <!-- Layanan & Garansi -->
+        <div>
+          <h4 class="footer-col-title">Jaminan Layanan</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" onclick="alert('Konsultasi dan bantuan layout mockup gratis untuk setiap pesanan.')">Bantuan Desain Gratis</a></li>
+            <li><a href="#" onclick="alert('Garansi reject 100% ganti baru bila ada cacat produksi.')">Garansi Reject 100%</a></li>
+            <li><a href="#" onclick="alert('Layanan produksi express 1-3 hari siap kirim.')">Produksi Express Tersedia</a></li>
+            <li><a href="https://wa.me/6285762005247" target="_blank">Konsultasi CS WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Keyspace.id. Seluruh hak cipta dilindungi. Platform Solusi Apparel & Kaos Custom Indonesia.</p>
+        <p>Keep It Simple. Minimalist. Maximalist.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/customizer.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>

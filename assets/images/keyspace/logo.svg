@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" width="160" height="40" fill="none">
+  <defs>
+    <linearGradient id="kgold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC107"/>
+      <stop offset="60%" stop-color="#FFA800"/>
+      <stop offset="100%" stop-color="#E68A00"/>
+    </linearGradient>
+    <filter id="kshadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="1.2" dy="2.2" stdDeviation="0.4" flood-color="#B45309" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+  <text x="3" y="30" font-family="'Fredoka', 'Comfortaa', 'Segoe UI', Arial, sans-serif" font-size="32" font-weight="800" fill="url(#kgold)" filter="url(#kshadow)" stroke="#D97706" stroke-width="0.8" letter-spacing="-0.5">Keyspace</text>
+</svg>
