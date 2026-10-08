@@ -692,6 +692,7 @@ class ApparelCustomizer {
     if (window.CartManager) {
       window.CartManager.addItem(customCartItem);
       window.showToast("Produk Custom berhasil ditambahkan ke keranjang! 🎉");
+      window.AppManager?.toggleCartDrawer(true);
     }
   }
 

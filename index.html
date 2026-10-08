@@ -49,7 +49,7 @@
         </button>
 
         <!-- Keranjang Button with Border & Count -->
-        <button id="open-cart-btn" class="nav-cart-btn" title="Keranjang Belanja">
+        <button id="open-cart-btn" class="nav-cart-btn" title="Keranjang Belanja" onclick="AppManager.toggleCartDrawer(true)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -292,7 +292,12 @@
           <div class="catalog-content-columns">
             <!-- Sidebar Kategori -->
             <div class="catalog-sidebar-col">
-              <h3 class="catalog-sidebar-title">Kategori Apparel</h3>
+              <div class="catalog-sidebar-header">
+                <div class="catalog-sidebar-title-group">
+                  <span class="catalog-sidebar-icon">🏷️</span>
+                  <h3 class="catalog-sidebar-title">Kategori Apparel</h3>
+                </div>
+              </div>
               <div class="catalog-sidebar-categories-list" id="catalog-categories-sidebar"></div>
             </div>
 
@@ -1481,19 +1486,22 @@
   <!-- ==========================================================================
        SHOPPING CART DRAWER
        ========================================================================== -->
-  <div id="cart-drawer-overlay" class="cart-drawer-overlay"></div>
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="AppManager.toggleCartDrawer(false)"></div>
   <div id="cart-drawer" class="cart-drawer">
     <div class="cart-drawer-header">
-      <h3 class="cart-drawer-title">Keranjang Belanja</h3>
-      <button id="close-cart-btn" class="modal-close-btn" style="position: static;">&times;</button>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 1.25rem;">🛍️</span>
+        <h3 class="cart-drawer-title" id="cart-drawer-title">Keranjang Belanja</h3>
+      </div>
+      <button id="close-cart-btn" class="modal-close-btn" style="position: static;" onclick="AppManager.toggleCartDrawer(false)">&times;</button>
     </div>
     <div id="cart-drawer-items" class="cart-drawer-items"></div>
     <div class="cart-drawer-footer">
       <div class="cart-total-row">
         <span>Total Pembayaran:</span>
-        <span id="cart-drawer-total" style="color: var(--keyspace-yellow);">Rp 0</span>
+        <span id="cart-drawer-total" style="color: #EA580C; font-weight: 800; font-size: 1.15rem;">Rp 0</span>
       </div>
-      <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="AppManager.openCheckout();">
+      <button id="cart-drawer-checkout-btn" class="btn btn-primary btn-lg" style="width: 100%;" onclick="AppManager.openCheckout();">
         🚀 Lanjut ke Pembayaran (Checkout)
       </button>
     </div>

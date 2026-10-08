@@ -139,19 +139,43 @@ const CartManager = {
   },
 
   render() {
+    const count = this.getItemCount();
+
     // Navbar badge count
     const badge = document.getElementById("cart-count-badge");
     if (badge) {
-      const count = this.getItemCount();
       badge.textContent = count;
       badge.style.display = count > 0 ? "inline-flex" : "none";
+    }
+
+    // Drawer Header title count
+    const cartTitle = document.getElementById("cart-drawer-title");
+    if (cartTitle) {
+      cartTitle.textContent = count > 0 ? `Keranjang Belanja (${count})` : "Keranjang Belanja";
     }
 
     // Drawer items list
     const cartList = document.getElementById("cart-drawer-items");
     const cartTotalElem = document.getElementById("cart-drawer-total");
+    const checkoutBtn = document.getElementById("cart-drawer-checkout-btn");
+
     if (cartTotalElem) {
       cartTotalElem.textContent = formatRupiah(this.getTotal());
+    }
+
+    if (checkoutBtn) {
+      if (this.items.length === 0) {
+        checkoutBtn.innerHTML = "🛍️ Mulai Belanja Sekarang";
+        checkoutBtn.onclick = () => {
+          AppManager.navigateTo('katalog');
+          AppManager.toggleCartDrawer(false);
+        };
+      } else {
+        checkoutBtn.innerHTML = `🚀 Lanjut ke Checkout (${count} Item)`;
+        checkoutBtn.onclick = () => {
+          AppManager.openCheckout();
+        };
+      }
     }
 
     if (cartList) {
@@ -175,17 +199,17 @@ const CartManager = {
           <div class="cart-item-info">
             <h4 class="cart-item-title">${item.name}</h4>
             <div class="cart-item-meta">
-              <span style="background: #F1F5F9; padding: 1px 6px; border-radius: 4px; font-weight: 700;">${item.size}</span>
+              <span style="background: #F1F5F9; padding: 1px 6px; border-radius: 4px; font-weight: 700; color: #475569;">${item.size}</span>
               <span style="color: #64748B; margin-left: 4px;">Warna: ${item.colorName}</span>
             </div>
             <div class="cart-item-price">${formatRupiah(item.price)}</div>
             <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
               <div style="display: flex; align-items: center; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #FFFFFF;">
-                <button style="padding: 2px 8px; background: #F8FAFC; font-weight: 800; color: #334155;" onclick="CartManager.updateQty(${idx}, -1)">-</button>
+                <button type="button" style="padding: 2px 9px; background: #F8FAFC; border: none; font-weight: 800; color: #334155; cursor: pointer;" onclick="CartManager.updateQty(${idx}, -1)">-</button>
                 <span style="padding: 2px 10px; font-size: 0.85rem; font-weight: 800; color: #1E293B;">${item.qty}</span>
-                <button style="padding: 2px 8px; background: #F8FAFC; font-weight: 800; color: #334155;" onclick="CartManager.updateQty(${idx}, 1)">+</button>
+                <button type="button" style="padding: 2px 9px; background: #F8FAFC; border: none; font-weight: 800; color: #334155; cursor: pointer;" onclick="CartManager.updateQty(${idx}, 1)">+</button>
               </div>
-              <button style="color: #EF4444; font-size: 0.8rem; font-weight: 700; background: none; border: none; cursor: pointer;" onclick="CartManager.removeItem(${idx})">Hapus</button>
+              <button type="button" style="color: #EF4444; font-size: 0.8rem; font-weight: 700; background: none; border: none; cursor: pointer;" onclick="CartManager.removeItem(${idx})">🗑️ Hapus</button>
             </div>
           </div>
         </div>
@@ -196,9 +220,9 @@ const CartManager = {
           <div style="display: flex; gap: 0.5rem;">
             <input type="text" id="cart-voucher-input" placeholder="Kode Promo (KEYSPACE10)" style="flex: 1; padding: 0.4rem 0.6rem; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; text-transform: uppercase;" value="${this.appliedVoucher ? this.appliedVoucher.code : ''}" ${this.appliedVoucher ? 'disabled' : ''} />
             ${this.appliedVoucher ? `
-              <button class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;" onclick="CartManager.removeVoucher()">Batal</button>
+              <button type="button" class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;" onclick="CartManager.removeVoucher()">Batal</button>
             ` : `
-              <button class="btn btn-primary btn-sm" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;" onclick="const code = document.getElementById('cart-voucher-input').value; const res = CartManager.applyVoucher(code); if(!res.success) alert(res.message);">Pakai</button>
+              <button type="button" class="btn btn-primary btn-sm" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;" onclick="const code = document.getElementById('cart-voucher-input').value; const res = CartManager.applyVoucher(code); if(!res.success) alert(res.message);">Pakai</button>
             `}
           </div>
           ${this.appliedVoucher ? `
@@ -367,7 +391,10 @@ const AppManager = {
     } else if (target === "riwayat") {
       this.renderOrderHistory();
     } else if (target === "katalog") {
+      this.renderCatalogSidebar();
       this.renderCatalogProducts();
+    } else if (target === "checkout") {
+      this.renderCheckoutSummary();
     } else if (target === "artikel") {
       this.renderArticles();
     }
@@ -655,7 +682,7 @@ const AppManager = {
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.75rem;" onclick="event.stopPropagation()">
-            <button class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.5rem; font-size: 0.78rem;" onclick="CartManager.addItem(PRODUCTS_DATA.find(x => x.id === '${p.id}') || window.AppStore.getProductById('${p.id}'))">
+            <button class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.5rem; font-size: 0.78rem;" onclick="CartManager.addItem(PRODUCTS_DATA.find(x => x.id === '${p.id}') || window.AppStore.getProductById('${p.id}')); AppManager.toggleCartDrawer(true);">
               + Keranjang
             </button>
             <button class="btn btn-primary btn-sm" style="padding: 0.35rem 0.5rem; font-size: 0.78rem;" onclick="AppManager.directCheckoutProduct('${p.id}')">
@@ -678,15 +705,30 @@ const AppManager = {
     const container = document.getElementById("catalog-categories-sidebar");
     if (!container || typeof CATEGORIES_DATA === "undefined") return;
 
+    const allProducts = window.AppStore ? window.AppStore.getProducts() : PRODUCTS_DATA;
+    const totalCount = allProducts.length;
+
     container.innerHTML = `
       <div class="sidebar-cat-pill ${this.currentCategory === 'all' ? 'active' : ''}" onclick="AppManager.filterByCategory('all')">
-        <span>Semua Kategori</span>
-      </div>
-      ${CATEGORIES_DATA.map(c => `
-        <div class="sidebar-cat-pill ${this.currentCategory === c.id ? 'active' : ''}" onclick="AppManager.filterByCategory('${c.id}')">
-          <span>${c.name}</span>
+        <div class="sidebar-cat-pill-left">
+          <span style="font-size: 1.05rem; line-height: 1; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; background: #F1F5F9; border-radius: 7px; flex-shrink: 0;">👕</span>
+          <span class="sidebar-cat-name">Semua Apparel</span>
         </div>
-      `).join("")}
+        <span class="sidebar-cat-badge">${totalCount}</span>
+      </div>
+      ${CATEGORIES_DATA.map(c => {
+        const catCount = allProducts.filter(p => p.category === c.id).length;
+        const countDisplay = catCount > 0 ? catCount : (c.count || "");
+        return `
+          <div class="sidebar-cat-pill ${this.currentCategory === c.id ? 'active' : ''}" onclick="AppManager.filterByCategory('${c.id}')">
+            <div class="sidebar-cat-pill-left">
+              <img src="${c.icon || 'assets/images/keyspace/cat_circle_1.png'}" alt="${c.name}" class="sidebar-cat-thumb" onerror="this.src='assets/images/keyspace/cat_circle_1.png'" loading="lazy" />
+              <span class="sidebar-cat-name">${c.name}</span>
+            </div>
+            <span class="sidebar-cat-badge">${countDisplay}</span>
+          </div>
+        `;
+      }).join("")}
     `;
   },
 
@@ -755,8 +797,14 @@ const AppManager = {
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("cart-drawer-overlay");
     if (drawer && overlay) {
-      drawer.classList.toggle("active", open);
-      overlay.classList.toggle("active", open);
+      const shouldOpen = (open !== undefined) ? Boolean(open) : !drawer.classList.contains("active");
+      drawer.classList.toggle("active", shouldOpen);
+      drawer.classList.toggle("open", shouldOpen);
+      overlay.classList.toggle("active", shouldOpen);
+      overlay.classList.toggle("open", shouldOpen);
+      if (shouldOpen) {
+        CartManager.render();
+      }
     }
   },
 
@@ -767,8 +815,9 @@ const AppManager = {
     this.toggleCartDrawer(false);
 
     if (CartManager.items.length === 0) {
-      const prods = window.AppStore ? window.AppStore.getProducts() : PRODUCTS_DATA;
-      CartManager.addItem(prods[0]);
+      window.showToast?.("Keranjang belanja masih kosong! Silakan pilih produk terlebih dahulu. 🛍️");
+      this.navigateTo("katalog");
+      return;
     }
 
     // Prefill customer profile if logged in
@@ -780,16 +829,54 @@ const AppManager = {
         const emailInp = document.getElementById("checkout-customer-email");
         const addrInp = document.getElementById("checkout-shipping-address");
         const cityInp = document.getElementById("checkout-shipping-city");
-        if (nameInp && !nameInp.value) nameInp.value = user.name;
-        if (phoneInp && !phoneInp.value) phoneInp.value = user.phone;
-        if (emailInp && !emailInp.value) emailInp.value = user.email;
-        if (addrInp && !addrInp.value) addrInp.value = user.address;
-        if (cityInp && !cityInp.value) cityInp.value = user.city;
+        if (nameInp && !nameInp.value) nameInp.value = user.name || "";
+        if (phoneInp && !phoneInp.value) phoneInp.value = user.phone || "";
+        if (emailInp && !emailInp.value) emailInp.value = user.email || "";
+        if (addrInp && !addrInp.value) addrInp.value = user.address || "";
+        if (cityInp && !cityInp.value) cityInp.value = user.city || "";
       }, 50);
     }
 
     this.navigateTo("checkout");
     this.renderCheckoutSummary();
+  },
+
+  toggleCheckoutAccordion() {
+    this.isAccordionCollapsed = !this.isAccordionCollapsed;
+    const list = document.getElementById("checkout-order-items-list");
+    const arrow = document.getElementById("checkout-accordion-arrow");
+    if (list) {
+      list.style.display = this.isAccordionCollapsed ? "none" : "block";
+    }
+    if (arrow) {
+      arrow.textContent = this.isAccordionCollapsed ? "▼" : "▲";
+    }
+  },
+
+  applyCheckoutVoucher() {
+    const input = document.getElementById("checkout-voucher-input");
+    const msg = document.getElementById("checkout-voucher-msg");
+    const code = input ? input.value.trim() : "";
+    if (!code) {
+      if (msg) {
+        msg.textContent = "Silakan masukkan kode voucher terlebih dahulu.";
+        msg.style.color = "#EF4444";
+      }
+      return;
+    }
+    const res = CartManager.applyVoucher(code);
+    if (res.success) {
+      if (msg) {
+        msg.textContent = `✓ ${res.message}`;
+        msg.style.color = "#16A34A";
+      }
+      this.renderCheckoutSummary();
+    } else {
+      if (msg) {
+        msg.textContent = `✗ ${res.message}`;
+        msg.style.color = "#EF4444";
+      }
+    }
   },
 
   renderCheckoutSummary() {
@@ -810,25 +897,43 @@ const AppManager = {
     if (summaryTitle) summaryTitle.textContent = `Ringkasan Pesanan (${itemCount} produk)`;
 
     if (CartManager.items.length === 0) {
-      listContainer.innerHTML = `<p style="padding: 1.5rem 0; color: #94A3B8; text-align: center;">Tidak ada produk di keranjang.</p>`;
+      listContainer.innerHTML = `
+        <div style="padding: 2rem 1rem; color: #94A3B8; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🛍️</div>
+          <p style="margin-bottom: 1rem; color: #64748B;">Keranjang belanja Anda masih kosong.</p>
+          <button type="button" class="btn btn-primary btn-sm" onclick="AppManager.navigateTo('katalog')">Pilih Produk di Katalog</button>
+        </div>
+      `;
       if (subtotalText) subtotalText.textContent = "Rp 0";
       if (calcSubtotal) calcSubtotal.textContent = "Rp 0";
       if (calcTotal) calcTotal.textContent = "Rp 0";
+      if (calcDiscount) calcDiscount.parentElement.style.display = "none";
       return;
     }
 
-    listContainer.innerHTML = CartManager.items.map(item => `
-      <div class="checkout-item-row">
-        <div class="checkout-item-thumb">
-          <img src="${item.image}" alt="${item.name}" onerror="handleImageError(this, '${item.name}')" />
+    listContainer.innerHTML = CartManager.items.map((item, idx) => `
+      <div class="checkout-item-row" style="display: flex; gap: 0.85rem; padding: 0.75rem 0; border-bottom: 1px solid #F1F5F9; align-items: center;">
+        <div class="checkout-item-thumb" style="width: 56px; height: 56px; border-radius: 8px; overflow: hidden; background: #F8FAFC; border: 1px solid #E2E8F0; flex-shrink: 0;">
+          <img src="${item.image}" alt="${item.name}" onerror="handleImageError(this, '${item.name}')" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
-        <div class="checkout-item-info">
-          <h4 class="checkout-item-name">${item.name}</h4>
-          <span class="checkout-item-size-badge">${item.size} | ${item.colorName}</span>
-          <div class="checkout-item-price-calc">
-            <span>${item.qty} × ${formatRupiah(item.price)}</span>
-            <span class="checkout-item-total">${formatRupiah(item.price * item.qty)}</span>
+        <div class="checkout-item-info" style="flex: 1; min-width: 0;">
+          <h4 class="checkout-item-name" style="font-size: 0.88rem; font-weight: 700; color: #1E293B; margin-bottom: 0.2rem; line-height: 1.3;">${item.name}</h4>
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="checkout-item-size-badge" style="background: #F1F5F9; font-size: 0.75rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; color: #475569;">${item.size}</span>
+            <span style="font-size: 0.75rem; color: #64748B;">Warna: ${item.colorName}</span>
           </div>
+          <div class="checkout-item-price-calc" style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.35rem;">
+            <span style="font-size: 0.82rem; color: #64748B;">${item.qty} × ${formatRupiah(item.price)}</span>
+            <span class="checkout-item-total" style="font-size: 0.92rem; font-weight: 800; color: #0F172A;">${formatRupiah(item.price * item.qty)}</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem;">
+          <div style="display: flex; align-items: center; border: 1px solid #CBD5E1; border-radius: 6px; overflow: hidden; background: #FFFFFF;">
+            <button type="button" style="padding: 1px 6px; background: #F8FAFC; border: none; font-weight: 800; cursor: pointer; color: #334155;" onclick="CartManager.updateQty(${idx}, -1)">-</button>
+            <span style="padding: 1px 8px; font-size: 0.8rem; font-weight: 800; color: #1E293B;">${item.qty}</span>
+            <button type="button" style="padding: 1px 6px; background: #F8FAFC; border: none; font-weight: 800; cursor: pointer; color: #334155;" onclick="CartManager.updateQty(${idx}, 1)">+</button>
+          </div>
+          <button type="button" style="color: #EF4444; font-size: 0.75rem; font-weight: 700; background: none; border: none; cursor: pointer;" onclick="CartManager.removeItem(${idx})">Hapus</button>
         </div>
       </div>
     `).join("");
@@ -838,8 +943,19 @@ const AppManager = {
     if (subtotalText) subtotalText.textContent = formatRupiah(subtotal);
     if (calcSubtotal) calcSubtotal.textContent = formatRupiah(subtotal);
     
+    // Sync voucher input and message
+    const vInput = document.getElementById("checkout-voucher-input");
+    const vMsg = document.getElementById("checkout-voucher-msg");
+    if (vInput && CartManager.appliedVoucher) {
+      vInput.value = CartManager.appliedVoucher.code;
+      if (vMsg) {
+        vMsg.textContent = `✓ Voucher ${CartManager.appliedVoucher.code} Aktif (${CartManager.appliedVoucher.discountPercent}%)`;
+        vMsg.style.color = "#16A34A";
+      }
+    }
+
     if (calcDiscount) {
-      if (discount > 0) {
+      if (discount > 0 && CartManager.appliedVoucher) {
         calcDiscount.parentElement.style.display = "flex";
         calcDiscount.textContent = `- ${formatRupiah(discount)} (${CartManager.appliedVoucher.code})`;
       } else {
