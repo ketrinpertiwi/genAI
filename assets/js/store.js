@@ -374,9 +374,12 @@
 
       // Initialize Products
       const savedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
+      const STORE_VERSION = "2.1";
+      const savedVersion = localStorage.getItem("keyspace_store_ver");
       if (typeof PRODUCTS_DATA !== "undefined") {
-        if (!savedProducts) {
+        if (!savedProducts || savedVersion !== STORE_VERSION) {
           localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(PRODUCTS_DATA));
+          localStorage.setItem("keyspace_store_ver", STORE_VERSION);
         } else {
           try {
             const parsed = JSON.parse(savedProducts);
